@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /bluepages/
+
+# Exclude the assets directory from rewrite rules
+#RewriteRule ^(assets)($|/) - [L]
+
+RewriteCond $1 !^(index\.php|images|assets|robots\.txt)
+
+# Rewrite all other URLs to index.php/Controller/Method
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
