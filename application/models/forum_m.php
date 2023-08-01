@@ -53,7 +53,7 @@ class Forum_m extends CI_Model{
 
      function get_replies($id)
     {
-		 $this->db->order_by('created_on', 'desc');
+		 $this->db->order_by('created_on', 'asc');
         return $this->db->where(array('discussion_id' => $id))->get('forum_replies')->result();
      }
 

@@ -144,7 +144,7 @@ load_top();
                             <div class="col-md-4 input-blue">
                             <div class="">Upload Profile Picture </div></div>
                             <div class="col-md-8">
-                               <input type="file" name="passport" id="profile" class="form-control input-white" required="required">
+                               <input type="file" name="image" id="image" class="form-control input-white" required="required">
                                                            </div>
                         </div>
 

@@ -16,6 +16,19 @@ function __construct(){
 	  $this->load->view('home/index');	
 	}
 
+	public function regions()
+	{
+
+		 $this->load->view('home/regions');
+
+	}
+
+	public function upcoming()
+	{
+		$this->load->view('home/upcoming');
+
+	}
+
 
 
 }

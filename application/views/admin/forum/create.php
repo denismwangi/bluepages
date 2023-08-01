@@ -44,7 +44,7 @@ load_sidebar();
 						
                             
                            
-                            <a href="<?php echo base_url().'admin/forum/create/'.$month.'/'.$year;?>"><button class="btn btn-success" ><span style="font-size:18px;"class="fa fa-plus"></span>New Discussion </button></a>
+                           <a href="<?php echo base_url().'admin/forum/create/'.$month.'/'.$year;?>"><button class="btn btn-success" style="text-transform: uppercase; font-size: "><span style="font-size:18px; " class="fa fa-plus"></span> New Discussion </button></a>
 							
 							<a href="" onclick="goBack();"><button class="btn btn-danger" ><span class="fa fa-caret-left"></span> PREVIOUS PAGE</button></a>
                         </div>                  

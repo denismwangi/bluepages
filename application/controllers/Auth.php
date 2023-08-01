@@ -151,31 +151,39 @@ class Auth extends CI_Controller{
 			$email = $this->input->post('email');
 			$phone = $this->input->post('phone');
 			$county = $this->input->post('county');
-			$passport = $this->input->post('passport'); 
+			//$passport = $this->input->post('image'); 
 
-		   $file_name = '';
+		    $file_name = '';
 
-			// // Set the file upload configuration
-	  //       $config['upload_path'] = './uploads/';
-	  //       $config['allowed_types'] = 'gif|jpg|png';
-	  //      // $config['max_size'] = 2048; // 2MB
-	  //       $config['encrypt_name'] = TRUE;
+			$this->load->helper('common_helper');
 
-	  //       $this->load->library('upload', $config);
-	  //       if (!$this->upload->do_upload($passport)) {
-	  //           // File upload failed, display error message
-	  //          $data['error'] = $this->upload->display_errors();
+	        $config['upload_path']          = './public/uploads/profile/';
+	        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+	        //$config['encrypt_name']         = true;
 
-	  //          $this->load->view('auth/individual', $data);
+	        $this->load->library('upload', $config);
 
-	  //          // $this->load->view('upload_form', $data);
+	        if(!empty($_FILES['image']['name'])){
+                    
+                   $this->upload->do_upload('image');
+                   $data = $this->upload->data();
 
-	  //       } else {
-	  //           // File uploaded successfully, retrieve upload data
-	  //           $upload_data = $this->upload->data();
-	  //           $file_name = $upload_data['file_name'];
-	            
-	  //       }
+                  //  print_r($data); die;
+
+	        }
+
+
+	        if(!empty($_FILES['image']['name'])){
+                //image is selected
+                if($this->upload->do_upload('image')) {
+                	$data = $this->upload->data();
+                    //resizing image for admin
+                    resizeImage($config['upload_path'].$data['file_name'], $config['upload_path'].'thumb/'.$data['file_name'], 300,270);
+
+                    $file_name = $data['file_name'];
+
+                }
+            }
 
 			$form_data = array(
 

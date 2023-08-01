@@ -74,12 +74,12 @@ $this->load->model('forum_m', true);
                     <div class="col-md-5">
 
                         <div class="pull-right" style="margin-top: 25px; padding-right: 3px;">
-						
+                        
                             
                            
-                            <a href="<?php echo base_url().'user/forum/create/'.$month.'/'.$year;?>"><button class="btn btn-success" ><span style="font-size:18px;"class="fa fa-plus"></span>New Discussion </button></a>
-							
-							<a href="" onclick="goBack();"><button class="btn btn-danger" ><span class="fa fa-caret-left"></span> PREVIOUS PAGE</button></a>
+                            <a href="<?php echo base_url().'user/forum/create/'.$month.'/'.$year;?>"><button class="btn btn-success" style="text-transform: uppercase; font-size: "><span style="font-size:18px; " class="fa fa-plus"></span> New Discussion </button></a>
+                            
+                            <a href="" onclick="goBack();"><button class="btn btn-danger" ><span class="fa fa-caret-left"></span> PREVIOUS PAGE</button></a>
                         </div>                  
 
                     </div>
@@ -145,32 +145,42 @@ $this->load->model('forum_m', true);
                                                     
                                                         <div class="row m-b-40">
                                                             <div class="col-sm-4">
-                                                                <h6 class="m-b-20">Posted By :</h6>
+                                                                
                                                                 <div class="d-inline-block align-middle">
                                                                 
                                                                 
                                         <?php 
-                                            
+                                            $u = $this->users_m->find($post->created_by);
                                                  
                                                 ?> 
                                             
-                                                 <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="80" height="80" class="img-radius img-80 align-top m-r-10"  style="margin-top: -125px !important; margin-right: 10px !important;">
+                                                 <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>">
+                                                    <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="80" height="80" class="img-radius img-80 align-top m-r-10"  style="margin-top: -55px !important; margin-right: 10px !important;">
+                                                 </a>
                                                     
+                                                <?php
                                                 
-                                                <div class="d-inline-block">
-                                                <?php 
-                                                
-                                                $u = $this->users_m->find($post->created_by);
-
 
                                                 ?>
-                                                    <h6 class="m-b-5"><?php echo $u->full_name;?></h6>
+                                                <div class="d-inline-block">
+                                                    
+                                                   <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><h5 style="" >
+                                        <b>By:</b> <?php 
+                                                
+                                                
+                                                echo $u->full_name;
+                     
+
+                                                ?></h5></a>
+                                            
+                                                
+                                                 
                                                     <p class="m-b-0 text-muted"><?php echo date('d M Y',$post->created_on)?></p>
                                                     <small class=" text-c-blue f-w-700"><?php echo time_ago($post->created_on);?></small>
                                                      
                                           
-                                            <p class="m-b-0 text-muted">Category: </p>
-                                                <a href="#!"><br><b><?php if($post->status==1) echo '<span class="label label-success font-12">Open</span>'; else echo'<span class="label label-warning font-12">Closed</span>'; ?></b> </a>    
+                                         
+                                                <a><br><b><?php if($post->status==1) echo '<span class="label label-success font-12">Open</span>'; else echo'<span class="label label-warning font-12">Closed</span>'; ?></b> </a>    
                                                 </div>
                                                 
                                             </div>
@@ -180,15 +190,14 @@ $this->load->model('forum_m', true);
                                         </div>
                                     </div>
                                 <hr>
-                                <?php if($status==1){?>
-                                    <a href="#!" id="dis_reply" class="label label-danger" ><i class="fa fa-reply-all text-c-blue m-r-10"></i>Click here to comment</a>
-                                <?php } ?>
-                                    <a href="#!"><i class="fa fa-comment-o text-c-blue m-r-10 m-l-20"></i>Comments (<?php echo $replies_count?>) </a>
-                                    <a href="#!"><i class="fa fa-eye text-c-blue m-r-10 m-l-20"></i>Views (<?php echo $post->views;?>) </a>
-                                    <a href="#!"><i class="fa fa-unlock text-c-blue m-r-10 m-l-20"></i>Status <b><span class="label label-info font-12">Joined</span></b> </a>
-                                    
                                 
-                                 
+                                <div class="text-center">
+
+                                    <a><i class="fa fa-comment-o text-c-blue m-r-10 m-l-20"></i>Comments (<?php echo $replies_count?>) </a>
+                                    <a><i class="fa fa-eye text-c-blue m-r-10 m-l-20"></i>Views (<?php echo $post->views;?>) </a>
+
+                                </div>
+                                    
                                 </div>
                                 
                                 
@@ -196,7 +205,32 @@ $this->load->model('forum_m', true);
                             </div>
                         </div>
 
-            <div class="col-xl-12 col-md-12" id="respond" style="display:none">
+          
+                            
+                    
+                 <div class="col-xl-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-blue">
+                            <h4 class="text-c-white text-center ">COMMENTS, REVIEWS, REPLIES AND REACTIONS </h4>
+                        </div>
+                            <div class="card-block">
+                                <div class="schedule-block"  id="chat_load">
+         
+                                            </div>
+
+                                            <hr>
+                                            <br>
+<?php
+
+                                            if($status==1){
+         ?>
+      
+           <a id="dis_reply" onclick="" class="label" style="background-color: #218838 !important;"><i class="fa fa-reply-all m-r-10 text-c-white"></i>Click here to comment</a>
+           <br>
+           <br>
+           <br>
+
+             <div class="col-xl-12 col-md-12" id="respond" style="display:none">
             
             <?php 
             $attributes = array('class' => 'form-horizontal', 'id' => '');
@@ -204,13 +238,13 @@ $this->load->model('forum_m', true);
             ?>
             <div class="form-group row">
             <div class="col-sm-12" >
-                     <textarea required="required" class="res_comment form-control" rows="4" name="response"   placeholder="Your response here"></textarea>
+                     <textarea required="required" class="res_comment form-control" rows="4" name="response" placeholder="Your response here"></textarea>
                      
                 </div>
             <div class="col-sm-12" >
             <br>
-             <a href="#" id="cancel" class="btn btn-danger btn-sm pull-right" style="margin-right:20px" > Cancel</a>
-                 <input id="submit" type="submit" class="btn btn-success btn-sm pull-right" style="margin-right:10px" value="Submit">
+             <a id="cancel" class="btn btn-danger btn-sm pull-right" style="margin-right:20px" >CANCEL</a>
+                 <input id="submit" type="submit" class="btn btn-success btn-sm pull-right" style="margin-right:10px" value="SUBMIT">
                 
                 <br>
                 <br>
@@ -221,24 +255,11 @@ $this->load->model('forum_m', true);
               <?php echo form_close(); ?>
               
               </div>
-                            
-                    
-                 <div class="col-xl-12 col-md-12">
-                    <div class="card">
-                        <div class="card-header bg-red">
-                            <h4 class="text-c-white text-center ">COMMENTS, REVIEWS, REPLIES AND REACTIONS </h4>
+              
+
+          <?php }?>
 
 
-                           
-                         
-                        </div>
-                            <div class="card-block">
-                                <div class="schedule-block"  id="chat_load">
-
-                                    
-                                                           
-                                                     
-                                            </div>
 
                                             </div>
                               

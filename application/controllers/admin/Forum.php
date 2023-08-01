@@ -128,7 +128,8 @@ class Forum extends CI_Controller {
 		            {
 		                   	
                  
-					 $this->load->view('admin/forum/list',$data);
+					 //$this->load->view('admin/forum/list',$data);
+					  redirect('admin/forum/list/'.$month.'/'.$year);
 				}
 
 			//   	}else{
@@ -313,132 +314,107 @@ class Forum extends CI_Controller {
 			<div class="schedule-list">
                                             
                                       
-                                         <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="50"  height="50" class="schedule-image">
-                                    
-                           
-                        
-                                     
-                                         <span class="label label-info font-15">
-                                            <?php
+             <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="50"  height="50" class="schedule-image"></a>
+        
+
+
+         
+             
 
 
 
-                                            if($u->group_id == 1){
-
-                                            ?>
-
-                                          Admin 
-                                          <?php
-                                                  }else{
-                                                      ?>
-                                                      User
-                                                      <?php
-
-                                                  }?>
-                                      </span>
-                                                </p>
-                     
-                        
-                     
-                                        <h6 style="margin-left:10px !important" >
-                                        <b>By:</b> <?php echo $u->full_name;?> 
-                                        <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y',$post->created_on);?></small>
-                                        </h6>
-                                        <span class="m-b-0 font-15" > <?php echo $r->comment?> </span>
-                                        
-                                         <p>
-                                            <a href="#!">
-                                            <i class="fa fa-calendar text-c-blue m-r-10"></i>
-                                            <?php echo $this->time_ago($r->created_on);?>
-                                            </a>
-                                            &nbsp;&nbsp;&nbsp;
-                                           
-                                          </p>
-                                        
-
-                                    
-                                             
-                                             <div class="col-sm-12"  id="response_replies_<?php echo $r->id; ?>" style="display:none">
-                                             
-                                                    <div class="card-header1">
-                                                        <b>Comments (<?php echo $count_response; ?>)</b>
-                                                        <hr>
-                                                      
-                                                    </div>
-                                                    
-                                             <!--- POST REPLIES ------------>                                            
-                                                           
-                                               
-                                                    
-                                                    <div class=" row" id="u_response_display_<?php echo $r->id;?>" style="display:none;">
-                                                        <div class="col-sm-1 text-center">
-                                                             <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"   alt="user image" class="img-radius text-center" width="40" height="40">
-                                                        </div>
-                                                    <div class="col-sm-11">
-                                                            <h6>
-                                                            <?php
-                                                             echo $u->full_name;?> 
-                                                            <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y');?></small>
-                                                            </h6>
-                                                            <p class="text-muted m-b-0" id="user_response_<?php echo $r->id;?>"></p>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    <hr>
-
-                                                     
-
-
-
-                                                    <?php 
-                                            //    $fpath = image_path('avatar-blank.jpg');
-                                                
-                                                foreach($posted_response as $rep){
-
-
-
-                                                    $ru = $this->users_m->find($r->created_by);
-                                                    
-                                                    ?>
-                                                   
-                                                    
-                                                    <div class=" row">
-                                                        <div class="col-sm-1 text-center">
-                                                             <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"   alt="user image" class="img-radius text-center" width="40" height="40">
-                                                        </div>
-                                                    <div class="col-sm-11">
-                                                            <h6>
-                                                            <?php echo $ru->full_name;?> 
-                                                            <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y',$rep->created_on);?></small>
-                                                            </h6>
-                                                            <span class="text-muted m-b-0 font-15"><?php echo $rep->comment?></span>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                
-                                                   
-                                                <?php } ?>
-                                                           
-                                                     
-                                            </div>
-
+            <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><h5 style="margin-left:0px !important" >
+            <b>By:</b> <?php echo $u->full_name;?> 
+            <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y',$post->created_on);?></small>
+            </h5>
+        </h5>
+            <span class="m-b-0 font-15" > <?php echo $r->comment?> </span>
             
-                                             
-                                           
-                                </div>
-
-
-                                <script>
-
+             <p>
+                <a href="#!">
+                <i class="fa fa-calendar text-c-blue m-r-10"></i>
+                <?php echo $this->time_ago($r->created_on);?>
+                </a>
+                &nbsp;&nbsp;&nbsp;
+               
+              </p>
             
 
-								function open_responses(){
+        
+                 
+                 <div class="col-sm-12"  id="response_replies_<?php echo $r->id; ?>" style="display:none">
+                 
+                        <div class="card-header1">
+                            <b>Comments (<?php echo $count_response; ?>)</b>
+                            <hr>
+                          
+                        </div>
+                        
+                 <!--- POST REPLIES ------------>                                            
+                               
+                   
+                        
+                        <div class=" row" id="u_response_display_<?php echo $r->id;?>" style="display:none;">
+                            <div class="col-sm-1 text-center">
+                                 <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"   alt="user image" class="img-radius text-center" width="40" height="40">
+                            </div>
+                        <div class="col-sm-11">
+                                <h5>
+                                <?php
+                                 echo $u->full_name;?> 
+                                <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y');?></small>
+                                </h6>
+                                <p class="text-muted m-b-0" id="user_response_<?php echo $r->id;?>"></p>
+                            </div>
+                            
+                        </div>
+                        <hr>
 
-									
+                         
 
 
-								}
-							</script>
+
+                        <?php 
+                //    $fpath = image_path('avatar-blank.jpg');
+                    
+                    foreach($posted_response as $rep){
+
+
+
+                        $ru = $this->users_m->find($r->created_by);
+                        
+                        ?>
+                       
+                        
+                        <div class=" row">
+                            <div class="col-sm-1 text-center">
+                                 <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"   alt="user image" class="img-radius text-center" width="40" height="40">
+                            </div>
+                        <div class="col-sm-11">
+                                <h6>
+                                <?php echo $ru->full_name;?> 
+                                <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y',$rep->created_on);?></small>
+                                </h6>
+                                <span class="text-muted m-b-0 font-15"><?php echo $rep->comment?></span>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                    
+                       
+                    <?php } ?>
+                      
+      
+           
+                         
+                </div>
+
+
+                 
+               
+    </div>
+
                                       
                                 
 

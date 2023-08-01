@@ -125,7 +125,9 @@ class Forum extends CI_Controller {
 		            {
 		                   	
                  
-					 $this->load->view('user/forum/list',$data);
+					// $this->load->view('user/forum/list',$data);
+
+					  redirect('user/forum/list/'.$month.'/'.$year);
 				}
 
 			//   	}else{
@@ -345,37 +347,20 @@ class Forum extends CI_Controller {
 			<div class="schedule-list">
                                             
                                       
-                                         <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="50"  height="50" class="schedule-image">
+                                         <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="50"  height="50" class="schedule-image"></a>
                                     
                            
                         
                                      
-                                         <span class="label label-info font-15">
-                                            <?php
-
-
-
-                                            if($u->group_id == 1){
-
-                                            ?>
-
-                                          Admin 
-                                          <?php
-                                                  }else{
-                                                      ?>
-                                                      User
-                                                      <?php
-
-                                                  }?>
-                                      </span>
-                                                </p>
+                                         
                      
                         
                      
-                                        <h6 style="margin-left:10px !important" >
+                                        <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><h5 style="margin-left:0px !important" >
                                         <b>By:</b> <?php echo $u->full_name;?> 
                                         <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y',$post->created_on);?></small>
-                                        </h6>
+                                        </h5>
+                                    </h5>
                                         <span class="m-b-0 font-15" > <?php echo $r->comment?> </span>
                                         
                                          <p>
@@ -407,7 +392,7 @@ class Forum extends CI_Controller {
                                                              <img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"   alt="user image" class="img-radius text-center" width="40" height="40">
                                                         </div>
                                                     <div class="col-sm-11">
-                                                            <h6>
+                                                            <h5>
                                                             <?php
                                                              echo $u->full_name;?> 
                                                             <small class="m-l-10 text-c-blue f-w-700"><?php echo date('d M Y');?></small>
@@ -447,10 +432,14 @@ class Forum extends CI_Controller {
                                                         </div>
                                                     </div>
                                                     <hr>
+
+
                                                 
                                                    
                                                 <?php } ?>
-                                                           
+                                                  
+                                  
+                                       
                                                      
                                             </div>
 
@@ -459,23 +448,16 @@ class Forum extends CI_Controller {
                                            
                                 </div>
 
-
-                                <script>
-
-            
-
-								function open_responses(){
-
-									
-
-
-								}
-							</script>
                                       
                                 
 
     <?php
-         }
+         
+
+         
+
+        
+     }
 
 		}
 
