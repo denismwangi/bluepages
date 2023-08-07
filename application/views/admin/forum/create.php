@@ -110,14 +110,14 @@ echo   form_open_multipart('user/forum/post_forum/'.$month.'/'.$year, $attribute
           </script>
 </div>
 
-<div class='form-group row'>
+<!-- <div class='form-group row'>
 	<div class="col-md-3 labl" for='file'>(file) </div>
  <div class="col-md-6">
 	<input id='file' type='file' name='file' />
 
 	
 </div>
-</div>
+</div> -->
 <hr>
 <div class='form-group row'><div class="col-md-3"></div><div class="col-md-6">
     

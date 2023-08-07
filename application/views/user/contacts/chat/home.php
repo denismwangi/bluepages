@@ -75,8 +75,10 @@ load_main_top();
 																							<img src="<?php echo base_url().'public/img/postachat.jpg';?>" width="100%" height="180" alt="icons2/Institution2">                            </a>
 																					</div>
 																					<div class="home_card" style="background-color:#0760f0;">
+																						
+
 																						<a class="media-middle" href="#">
-																							<h4 class="text-center text-18-bold"style="color:white;"><b>Online Chat</b> </h4>
+																							<h4 class="text-center text-18-bold"style="color:white;"><b>Online Chat    <i style="color:maroon;font-size:25" class="fa fa-comments-o">  10</i></b> </h4>
 																						</a>
 																					</div>
 																				</div>
@@ -89,8 +91,9 @@ load_main_top();
 																							<img src="<?php echo base_url().'public/img/postachat.jpg';?>" width="100%" height="180" alt="icons2/Institution2">                            </a>
 																					</div>
 																					<div class="home_card"style="background-color:#0760f0;">
-																						<a class="media-middle" href="#">
-																							<h4 class="text-center text-18-bold"style="color:white;"><b>Posta Mail</b> </h4>
+																						
+																					<a class="media-middle" href="#">
+																							<h4 class="text-center text-18-bold"style="color:white;"><b>Posta E-Mail    <i style="color:maroon;font-size:25" class="fa fa-envelope" aria-hidden="true">  8</i> </b> </h4>
 																						</a>
 																					</div>
 																				</div>

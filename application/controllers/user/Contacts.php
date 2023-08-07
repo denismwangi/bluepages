@@ -7,7 +7,7 @@ function __construct(){
 	
 	   if(!$this->session->userdata('id'))
             redirect('auth/login');
-         }
+         
 	 }
 
     public function chat()

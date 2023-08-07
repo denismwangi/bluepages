@@ -16,16 +16,26 @@ class Auth extends CI_Controller{
           $this->load->model('subcounties_m');
          
           $this->load->helper(array('form', 'url'));
+          $this->load->library('form_validation');
+
      }
 
 	public function login(){
 			//Validation for login form
-			$this->form_validation->set_rules('email','required|valid_email');
-			$this->form_validation->set_rules('password','required');
+			
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+			$this->form_validation->set_rules('password', 'Password', 'required');
 
 
 
-		//	if($this->form_validation->run()){
+		//	//Rules for validation
+          if ($this->form_validation->run() === FALSE) {
+
+          	 $this->load->view('auth/login');
+
+          }else{
+
+
 				
 				$email=$this->input->post('email');
 				$password=$this->input->post('password');
@@ -65,38 +75,12 @@ class Auth extends CI_Controller{
 					 $data['error'] = 'Invalid username or password.';
                      $this->load->view('auth/login', $data);
 				}
-			// } else{
-				
-			// 	//$this->load->view('auth/login');	
-			// 	 $data['error'] = 'Invalid username or password.';
-   //               $this->load->view('auth/login', $data);
-			// }
-	}
-
-
-	public function register_coop()
-	{
-		//Form Validation
-		$this->form_validation->set_rules('firstname','First Name','required|alpha');
-		$this->form_validation->set_rules('lastname','Last Name','required|alpha');
-		$this->form_validation->set_rules('emailid','Email Id','required|valid_email|is_unique[tblusers.Email]');
-		$this->form_validation->set_rules('password','Password','required|min_length[6]');
-		$this->form_validation->set_rules('confirmpassword','Confirm Password','required|min_length[6]|matches[password]');
-		$this->form_validation->set_message('is_unique', 'This email is already exists.');
-		if($this->form_validation->run())
-		{
-			//Getting Post Values
-			$fname=$this->input->post('firstname');
-			$lname=$this->input->post('lastname');
-			$emailid=$this->input->post('emailid');
-			$password=$this->input->post('password');
-			$this->load->model('Signup_Model');
-			$this->Signup_Model->index($fname,$lname,$emailid,$password);
-		} else {
+			}
 			
-			$this->load->view('signup');
-		}
 	}
+
+
+
 
 	public function register()
 	{
@@ -134,16 +118,29 @@ class Auth extends CI_Controller{
 
 	public function post_individual()
 	{
+
+	     $this->form_validation->set_rules('full_name', 'Full Name', 'required|min_length[5]|max_length[30]');
+	     $this->form_validation->set_rules('institution', 'Institution', 'required');
+	     $this->form_validation->set_rules('country', 'Country', 'required|max_length[30]');
+	     $this->form_validation->set_rules('county', 'County', 'required|max_length[30]');
+	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required|max_length[30]');
+	     $this->form_validation->set_rules('address', 'Address', 'required|max_length[30]');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required');
+	      $this->form_validation->set_rules('password', 'Password', 'required');
+
+
+
 		//Rules for validation
-          $this->form_validation->set_rules($this->individual_validation());
+          if ($this->form_validation->run() === FALSE) {
 
-          //validate the fields of form
-          // if ($this->form_validation->run())
-          // {  
+          	$data['countries'] = $this->countries_m->get_all();
+	       $data['counties'] = $this->counties_m->get_all();
+	       $data['sub_counties'] = $this->subcounties_m->get_all();
 
-         
+			$this->load->view('auth/individual',$data);
 
-	        $full_name = $this->input->post('full_name');
+          }else{
+          	$full_name = $this->input->post('full_name');
 			$institution = $this->input->post('institution');
 			$country = $this->input->post('country');
 			$sub_county = $this->input->post('sub_county');
@@ -151,39 +148,34 @@ class Auth extends CI_Controller{
 			$email = $this->input->post('email');
 			$phone = $this->input->post('phone');
 			$county = $this->input->post('county');
-			//$passport = $this->input->post('image'); 
+			$password = $this->input->post('password');
+		
+            
+		    $dest = FCPATH . "uploads/profile";
 
-		    $file_name = '';
+            $config['upload_path'] = $dest;
+            $config['allowed_types'] = 'png|jpeg|jpg';
+        //    $config['max_size'] = '2048';
+         //   $config['encrypt_name'] = true;
 
-			$this->load->helper('common_helper');
+            $this->upload->initialize($config);
 
-	        $config['upload_path']          = './public/uploads/profile/';
-	        $config['allowed_types']        = 'gif|jpg|png|jpeg';
-	        //$config['encrypt_name']         = true;
+            if (!is_dir($dest)) {
 
-	        $this->load->library('upload', $config);
-
-	        if(!empty($_FILES['image']['name'])){
-                    
-                   $this->upload->do_upload('image');
-                   $data = $this->upload->data();
-
-                  //  print_r($data); die;
-
-	        }
-
-
-	        if(!empty($_FILES['image']['name'])){
-                //image is selected
-                if($this->upload->do_upload('image')) {
-                	$data = $this->upload->data();
-                    //resizing image for admin
-                    resizeImage($config['upload_path'].$data['file_name'], $config['upload_path'].'thumb/'.$data['file_name'], 300,270);
-
-                    $file_name = $data['file_name'];
-
-                }
+                mkdir(
+                    $dest,
+                    0777,
+                    true
+                );
             }
+
+             $this->load->library('upload', $config);
+
+            $this->upload->do_upload('passport');
+
+            $data = $this->upload->data();
+            $file_name = $data['file_name'];
+            
 
 			$form_data = array(
 
@@ -201,13 +193,12 @@ class Auth extends CI_Controller{
 
 			$ok = $this->individuals_m->create($form_data);
 
-
 			if($ok){
 	
 				$user_data =  array(
 					'full_name' => $full_name,
 					'email' => $email,
-					'password' => password_hash(12345678,PASSWORD_DEFAULT),
+					'password' => password_hash($password,PASSWORD_DEFAULT),
 					'group_id' => 4,
 					'passport' => $file_name,
 					'created_at' => time(),
@@ -215,6 +206,7 @@ class Auth extends CI_Controller{
 					'phone' => $phone,
 					'role' => 2,
 					'locked' => 1,
+					'unique_id' => $ok,
 				); 
 				$ok_user = $this->users_m->create($user_data);
 
@@ -230,9 +222,7 @@ class Auth extends CI_Controller{
 
 			
 			
-		//}
-
-
+		}
 	}
 
 	public function test()
@@ -250,12 +240,33 @@ class Auth extends CI_Controller{
 
 	public function post_corporate()
 	{
-		//Rules for validation
-          $this->form_validation->set_rules($this->coorporate_validation());
+
+		  $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[30]');
+	     $this->form_validation->set_rules('type', 'Type', 'required');
+	     $this->form_validation->set_rules('country', 'Country', 'required');
+	     $this->form_validation->set_rules('county', 'County', 'required');
+	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required');
+	     $this->form_validation->set_rules('address', 'Address', 'required');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required');
+	      $this->form_validation->set_rules('website', 'Website', 'required');
+	      $this->form_validation->set_rules('person', 'Person', 'required');
+	     $this->form_validation->set_rules('designation', 'Designation', 'required');
+	      $this->form_validation->set_rules('password', 'Password', 'required');
+
 
           //validate the fields of form
-          // if ($this->form_validation->run())
-          // {
+          if ($this->form_validation->run() === FALSE) {
+          	 $data['countries'] = $this->countries_m->get_all();
+	       $data['counties'] = $this->counties_m->get_all();
+	       $data['sub_counties'] = $this->subcounties_m->get_all();
+
+	      
+
+			$this->load->view('auth/corporate',$data);
+
+
+          }else{
+
           	$name = $this->input->post('name');
 			$type = $this->input->post('type');
 			$country = $this->input->post('country');
@@ -267,31 +278,34 @@ class Auth extends CI_Controller{
 			$reg_person = $this->input->post('person');
 			$designation = $this->input->post('designation');
 			$phone = $this->input->post('phone');
-			$logo = $this->input->post('logo');  
-			// Set the file upload configuration
-	        $config['upload_path'] = './uploads/';
-	        $config['allowed_types'] = 'gif|jpg|png';
-	       // $config['max_size'] = 2048; // 2MB
-	        $config['encrypt_name'] = TRUE;
-
-	        $this->load->library('upload', $config);
-	        $file_name = '';
-	        if (!$this->upload->do_upload($logo)) {
-	            // File upload failed, display error message
-	           $data['error'] = $this->upload->display_errors();
-
-	           $this->load->view('auth/individual', $data);
-
-	           // $this->load->view('upload_form', $data);
-
-	        } else {
-	            // File uploaded successfully, retrieve upload data
-	            $upload_data = $this->upload->data();
-	            $file_name = $upload_data['file_name'];
-	            
-	        }
+			$password = $this->input->post('password');
 
 
+			$dest = FCPATH . "uploads/profile";
+
+            $config['upload_path'] = $dest;
+            $config['allowed_types'] = 'png|jpeg|jpg';
+        //    $config['max_size'] = '2048';
+         //   $config['encrypt_name'] = true;
+
+            $this->upload->initialize($config);
+
+            if (!is_dir($dest)) {
+
+                mkdir(
+                    $dest,
+                    0777,
+                    true
+                );
+            }
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('passport');
+
+            $data = $this->upload->data();
+            $file_name = $data['file_name'];
+            
 
 			$form_data = array(
 
@@ -306,7 +320,7 @@ class Auth extends CI_Controller{
 				'reg_person'=> $reg_person,
 				'designation' => $designation,
 				'phone' => $phone,
-				'logo' => $file_name,
+				'passport' => $file_name,
 				'created_at' => time(),
 			);
 
@@ -316,7 +330,7 @@ class Auth extends CI_Controller{
 				$user_data =  array(
 					'full_name' => $name,
 					'email' => $email,
-					'password' => password_hash(12345678,PASSWORD_DEFAULT),
+					'password' => password_hash($password,PASSWORD_DEFAULT),
 					'group_id' => 3,
 					'passport' => $file_name,
 					'created_at' => time(),
@@ -324,6 +338,7 @@ class Auth extends CI_Controller{
 					'phone' => $phone,
 					'role' => 2,
 					'locked' => 1,
+					'unique_id' => $ok,
 				); 
 				$ok_user = $this->users_m->create($user_data);
 
@@ -337,7 +352,7 @@ class Auth extends CI_Controller{
 				redirect('auth/corporate');	
 			}
 
-          //}
+          }
 
     
 
@@ -346,136 +361,7 @@ class Auth extends CI_Controller{
 
 
 
-	 private function individual_validation()
-     {
-          $config = array(
-                  array(
-                          'field' => 'full_name',
-                          'label' => 'Full Name',
-                          'rules' => 'required|trim|xss_clean|min_length[0]|max_length[60]'
-                      ),
-
-                  array(
-                          'field' => 'institution',
-                          'label' => 'Institution',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'country',
-                          'label' => 'Country',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'sub_county',
-                          'label' => 'Sub_county',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'address',
-                          'label' => 'Address',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'email',
-                          'label' => 'Email',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]|valid_email|is_unique[individuals.email]'
-                    ),
-                  array(
-                          'field' => 'phone',
-                          'label' => 'Phone',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                   array(
-                          'field' => 'passport',
-                          'label' => 'Passport',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-         );
-
-
-          $this->form_validation->set_error_delimiters("<br /><span class='error'>", '</span>');
-
-          return $config;
-     }
-
-     private function coorporate_validation()
-     {
-
-     			
-
-          $config = array(
-                  array(
-                          'field' => 'name',
-                          'label' => 'Name',
-                          'rules' => 'required|trim|xss_clean|min_length[0]|max_length[60]'
-                      ),
-
-                  array(
-                          'field' => 'type',
-                          'label' => 'Type',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-
-                  array(
-                          'field' => 'country',
-                          'label' => 'Country',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-	                 array(
-	                      'field' => 'county',
-	                      'label' => 'County',
-	                      'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-	                ),
-
-                  array(
-                          'field' => 'sub_county',
-                          'label' => 'Sub_county',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'address',
-                          'label' => 'Address',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                  array(
-                          'field' => 'email',
-                          'label' => 'Email',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]|valid_email|is_unique[corporates.email]'
-                    ),
-                  array(
-                          'field' => 'phone',
-                          'label' => 'Phone',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                   array(
-                          'field' => 'website',
-                          'label' => 'Website',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                    array(
-                          'field' => 'reg_person',
-                          'label' => 'Registering Person',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                     array(
-                          'field' => 'designation',
-                          'label' => 'Designation',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-                   array(
-                          'field' => 'logo',
-                          'label' => 'Logo',
-                          'rules' => 'trim|xss_clean|min_length[0]|max_length[500]'
-                    ),
-         );
-
-
-          $this->form_validation->set_error_delimiters("<br /><span class='error'>", '</span>');
-
-          return $config;
-     }
-
-
+	
 
 
 

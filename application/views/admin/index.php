@@ -49,7 +49,26 @@ load_main_top();
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                            							
-                                                                <img src="<?php echo base_url().'public/img/admin/admin.jpg';?>" width="65" class="img-radius" alt="User-Profile-Image">
+                                                            
+
+                                                                
+                <?php
+                if(!empty($this->session->userdata('passport'))){
+
+                    ?>
+
+
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$this->session->userdata('passport');?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+
+                    <?php
+                }else{
+
+                    ?>
+                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+                    <?php
+                }
+
+                    ?>
                                     
 
                         </div>
@@ -58,11 +77,11 @@ load_main_top();
                                 <span>ADMIN</span>
                             </li>
                           
-                                    <li>
-                                        <a href="">
+                                   <!-- <li>
+                                        <a href="<?php echo base_url().'user/settings/edit_profile';?>">
                                             <i class="feather icon-settings"></i> Settings
                                         </a>
-                                    </li>
+                                    </li> -->
                            
                             <li>
                                 <a href="">
@@ -111,7 +130,26 @@ load_main_top();
                 <br>
 		
 		
-        <img style="" src="<?php echo base_url().'public/img/admin/admin.jpg';?>" width="200" height="180" />
+      
+
+
+                <?php
+                if(!empty($this->session->userdata('passport'))){
+
+                    ?>
+
+
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$this->session->userdata('passport');?>" width="200" height="180" class="img-radius" alt="User-Profile-Image">
+
+                    <?php
+                }else{
+
+                    ?>
+                    <td> <img src="<?php echo base_url().'public/img/avatar.png';?>" width="200" height="180" class="img-radius" alt="User-Profile-Image">
+                    <?php
+                }
+
+                    ?>
 		<br>
 		<br>
 

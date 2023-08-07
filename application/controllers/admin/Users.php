@@ -14,6 +14,10 @@ function __construct(){
 		  $this->load->model('individuals_m');
           $this->load->model('users_m');
           $this->load->model('corporates_m');
+         $this->load->model('counties_m');
+         $this->load->model('countries_m');
+             
+
 	 }
 
 	public function index(){

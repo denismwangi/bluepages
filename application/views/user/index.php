@@ -48,8 +48,49 @@ load_main_top();
                 <li class="user-profile header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
+
                            							
-                                                                <img src="<?php echo base_url().'public/img/users/user1.jpg';?>" width="65" class="img-radius" alt="User-Profile-Image">
+              
+
+
+                  <?php
+                   $this->load->model('users_m');
+            $this->load->model('individuals_m');
+            $this->load->model('corporates_m');
+
+
+
+            if($this->session->userdata('group_id') == 4){
+
+                $u = $this->individuals_m->find($this->session->userdata('unique_id'));
+            }  
+            
+
+            elseif($this->session->userdata('group_id') == 3){
+
+                $u = $this->corporates_m->find($this->session->userdata('unique_id'));
+            }else{
+
+                $u = $this->users_m->find($this->session->userdata('id'));
+
+            } 
+            
+                if(!empty($u->passport)){
+
+                    ?>
+
+
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>" width="65" class="img-radius" alt="User-Profile-Image">
+
+                    <?php
+                }else{
+
+                    ?>
+                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="65" class="img-radius" alt="User-Profile-Image">
+                    <?php
+                }
+
+                    ?>
                                     
 
                         </div>
@@ -59,7 +100,7 @@ load_main_top();
                             </li>
                           
                                     <li>
-                                        <a href="">
+                                        <a href="<?php echo base_url().'user/settings/edit_profile';?>">
                                             <i class="feather icon-settings"></i> Settings
                                         </a>
                                     </li>
@@ -109,14 +150,61 @@ load_main_top();
                         <nav class="pcoded-navbar scroll" navbar-theme="theme1" active-item-theme="theme2" sub-item-theme="theme2" active-item-style="style0" pcoded-navbar-position="none">
     <div class="widget-fluid  clearfix  side-logo " style="text-align:center" >
                 <br>
-		
-		
-        <img style="" src="<?php echo base_url().'public/img/users/user1.jpg';?>" width="200" height="180" />
+
+                <?php
+                if(!empty($u->passport)){
+
+                    ?>
+
+             
+                        <div style= "border-color: blue;"class="card gallery-desc">
+                            <div class="masonry-media">
+                                <a class="media-middle" target="" href="">
+                               <img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>" width="200" height="180" alt="User-Profile-Image">
+                               </a>
+                            </div>
+                            
+                        </div>
+                   
+                <?php
+                }else{
+
+                    ?>
+
+                    
+                        <div style= "border-color: blue;"class="card gallery-desc">
+                            <div class="masonry-media">
+                                <a class="media-middle" target="" href="">
+                               <img src="<?php echo base_url().'public/img/avatar.png';?>" width="200" height="180" alt="User-Profile-Image">
+                              </a>
+                            </div>
+                            
+                        </div>
+                   
+                <?php
+                }
+
+                    ?>
+
+        
 		<br>
 		<br>
 
         <div Style="background-color:#0760f0;">
-		<h5 style="color:white"><b><?php echo  $this->session->userdata('full_name'); ?><b>
+		<h5 style="color:white"><b>
+
+            <?php
+
+            if($this->session->userdata('group_id') == 3){
+                 echo $u->name; 
+
+              }elseif($this->session->userdata('group_id') == 4 || $this->session->userdata('group_id')  == 1){
+                echo $u->full_name; 
+
+
+            }
+                ?>
+               <b>
             <br>
             
         </h5>

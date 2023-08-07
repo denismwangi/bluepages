@@ -46,13 +46,22 @@ load_top();
                         <div class="row text-center" >
 
                             <div class="col-sm-12">
+
+                             
+                               <?php 
+                              $attributes = array('class' => 'form-horizontal card', 'id' => '', 'style'=> 'margin:5px;','utocomplete'=>'off');
+                              echo   form_open_multipart('auth/post_individual', $attributes); 
+                              ?>
                                 
-                                                     <form action="<?php echo base_url().'auth/post_individual';?>" method="post" accept-charset="utf-8" class="form-horizontal card" id="" style="margin:5px;" autocomplete="off" enctype="multipart/form-data">
-                             <div class="form-group row">
+                            <div class="form-group row">
                             <div class="col-md-4 input-blue">
                             <div class=""> Full Name  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="full_name" value="" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required"  />                                                           </div>
+                                <input type="text" name="full_name" id="name" onchange="get_email()" value="" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required"/>
+
+                               <span class="text-danger"><?= form_error('full_name'); ?><span>
+
+                                </div>
                         </div>
 
                         <div class="form-group row">
@@ -60,11 +69,12 @@ load_top();
                             <div class=""> Institution (<small>Optional</small>)  </div></div>
                             <div class="col-md-7">
                                 <select name="institution" class="select form-control" >
-<option value="" selected="selected">Select Institution .....</option>
-<option value="DSMS">DSMS</option>
-<option value="ST MARK">ST MARK</option>
+                          <option value="" selected="selected">Select Institution .....</option>
+                          <option value="DSMS">DSMS</option>
+                          <option value="ST MARK">ST MARK</option>
 
-</select>                                                           </div>
+                          </select>     
+                           <span class="text-danger"><?= form_error('institution'); ?><span>                                                      </div>
                         </div>
 
                         <div class="form-group row">
@@ -72,7 +82,7 @@ load_top();
                             <div class=""> Country  </div></div>
                             <div class="col-md-7">
                                 <select name="country" class="select form-control" required="required" >
-<option value="" selected="selected">Select County</option>
+                                <option value="" selected="selected">Select County</option>
                                     <?php
 
                                     foreach ($countries as $country) {
@@ -82,106 +92,180 @@ load_top();
                                     }
                                     ?>
 
-</select>                                                           </div>
-                        </div>
-                         <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class=""> County  </div></div>
-                            <div class="col-md-7">
-                                <select name="county" class="select form-control" id="county" required="required" >
-<option value="" selected="selected">Select County</option>
-<option value="AZ">International / Unknown</option>
- <?php
+                    </select> 
+                    <span class="text-danger"><?= form_error('country'); ?><span>                                                          </div>
+                  </div>
+                   <div class="form-group row">
+                      <div class="col-md-4 input-blue">
+                      <div class=""> County  </div></div>
+                      <div class="col-md-7">
+                          <select name="county" class="select form-control" id="county" required="required" >
+                      <option value="" selected="selected">Select County</option>
+                      <option value="AZ">International / Unknown</option>
+                       <?php
 
-                                    foreach ($counties as $county) {
-                                        ?>
-                                        <option value="<?php echo $county->id; ?>"><?php echo $county->name; ?></option>
-                                        <?php
-                                    }
-                                    ?>
-</select>                                                           </div>
-                        </div>
-                         <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class=""> Sub County  </div></div>
-                            <div class="col-md-7">
-                                <select name="sub_county" class="select form-control" id="sub_county">
-<option value="" selected="selected">Select Sub County</option>
+                              foreach ($counties as $county) {
+                                  ?>
+                                  <option value="<?php echo $county->id; ?>"><?php echo $county->name; ?></option>
+                                  <?php
+                              }
+                              ?>
+                          </select>   
+                           <span class="text-danger"><?= form_error('county'); ?><span>                                                        </div>
+                            </div>
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class=""> Sub County  </div></div>
+                                <div class="col-md-7">
+                              <select name="sub_county" class="select form-control" id="sub_county">
+                              <option value="" selected="selected">Select Sub County</option>
 
-                   <?php
+                               <?php
 
-                                    foreach ($sub_counties as $subcounty) {
-                                        ?>
-                                        <option value="<?php echo $subcounty->id; ?>"><?php echo $subcounty->name; ?></option>
-                                        <?php
-                                    }
-                                    ?>
-</select>                                                           </div>
-                        </div>
-                          <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class=""> Physical Address  </div></div>
-                            <div class="col-md-7">
-                                <input type="text" name="address" value="" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />                                                           </div>
-                        </div>
+                                  foreach ($sub_counties as $subcounty) {
+                                      ?>
+                                      <option value="<?php echo $subcounty->id; ?>"><?php echo $subcounty->name; ?></option>
+                                      <?php
+                                  }
+                                  ?>
+                            </select>  
+                            <span class="text-danger"><?= form_error('sub_county'); ?><span>                                                         </div>
+                            </div>
+                              <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class=""> Physical Address  </div></div>
+                                <div class="col-md-7">
+                                    <input type="text" name="address" value="" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  /> 
+                                     <span class="text-danger"><?= form_error('address'); ?><span>
+                                                                                              </div>
+                            </div>
 
-                         <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class=""> Email Address  </div></div>
-                            <div class="col-md-7">
-                               <input type="email" name="email" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" />
-                                                           </div>
-                        </div>
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class=""> Email Address  </div></div>
+                                <div class="col-md-7">
+                                   <input type="text" name="email" id="email" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" readonly="" />
+                                    <span class="text-danger"><?= form_error('email'); ?><span>
+                                                               </div>
+                            </div>
 
-                         <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class="">Valid Phone No. </div></div>
-                            <div class="col-md-7">
-                               <input type="tel" name="phone" class="form-control input-white mobile-number" pattern="([\+0-9\s]{10,})"  title="required valid phone" required="required" />
-                                                           </div>
-                        </div>
-                         <div class="form-group row">
-                            <div class="col-md-4 input-blue">
-                            <div class="">Upload Profile Picture </div></div>
-                            <div class="col-md-8">
-                               <input type="file" name="image" id="image" class="form-control input-white" required="required">
-                                                           </div>
-                        </div>
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class="">Valid Phone No. </div></div>
+                                <div class="col-md-7">
+                                   <input type="tel" name="phone" class="form-control input-white mobile-number" pattern="([\+0-9\s]{10,})"  title="required valid phone" required="required" />
+                                   <span class="text-danger"><?= form_error('phone'); ?><span>
+                                                               </div>
+                            </div>
+
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class="">Password </div></div>
+                                <div class="col-md-7">
+                                   <input type="text" name="password" id="pswd1" class="form-control input-white" required="required" />
+                                    <span class="text-danger" id="pass_error"><span> 
+                                                               </div>
+                            </div>
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class="">Confirm Password </div></div>
+                                <div class="col-md-7">
+                                   <input type="text" name="password" id="pswd2" class="form-control input-white" required="required" />
+                                   
+                                                               </div>
+                            </div>
+
+                            
+                             <div class="form-group row">
+                                <div class="col-md-4 input-blue">
+                                <div class="">Upload Profile Picture </div></div>
+                                <div class="col-md-8">
+                                  <!--  <input type="file" name="logo" /> -->
+                                   <input type="file" name="passport" id="image" class="form-control input-white" required="required">
+                               </div>
+                            </div>
 
 
- <div class="forgot-phone text-right float-right">
-                                             <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"> <i class="fa fa-sign-in"></i> Submit</button>
+                             <div class="forgot-phone text-right float-right">
+                                                 <button type="submit" onclick="matchPassword()" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"> <i class="fa fa-sign-in"></i> Submit</button>
 
-                                        </div>
+                                            </div>
+                           <?php echo form_close();?>
 
 
-  </form>  </div>
-                                    <div class="row"> 
-									  <div class="col-sm-4"> 
-									  
-									  </div>
-									  <div class="col-sm-4"> 
-									  <a href="<?php echo base_url().'auth/login';?>" class="btn-primary btn" style="background: blue; color: #fff"> Already have an account? Go Back to Login</a>
-									  </div>
-									  <div class="col-sm-4"> 
-									  
-								    </div>
-                         </div>
-                        </div>
-                </div>
-</div>
-<style type="text/css">
-    .input-blue{
-        
-        background: #2D70C0; color: #fff; text-align: center; padding: 10px;
+                          </div>
+                                        <div class="row"> 
+    									  <div class="col-sm-4"> 
+    									  
+    									  </div>
+    									  <div class="col-sm-4"> 
+    									  <a href="<?php echo base_url().'auth/login';?>" class="btn-primary btn" style="background: blue; color: #fff"> Already have an account? Go Back to Login</a>
+    									  </div>
+    									  <div class="col-sm-4"> 
+    									  
+    								    </div>
+                             </div>
+                            </div>
+                    </div>
+                  </div>
+                <style type="text/css">
+                    .input-blue{
+                        background: #2D70C0; color: #fff; text-align: center; padding: 10px;
+                    }
+
+                </style>
+<script type="text/javascript">
+
+  function get_email(){
+   
+    var apiUrl = "<?php echo base_url('home/create_email'); ?>";
+
+    
+    const name  = document.getElementById("name").value;
+    const email = document.getElementById("email");
+    const postData = {
+        name: name,
        
-    }
+    };
+     const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    };
 
-</style>
+    // Fetch data from API
+    fetch(apiUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
 
+          console.log(data.email);
+          email.value  = data.email;
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+      }
+
+
+
+      function matchPassword() {  
+        var pw1 = document.getElementById("pswd1");  
+        var pw2 = document.getElementById("pswd2");  
+        if(pw1 != pw2)  
+        {   
+          document.getElementById("pass_error").innerHTML = "password don't match";
+          
+        }  
+  }  
+  
+</script>
 <?php
 
-load_footer();
+  load_footer();
 
 
 ?>

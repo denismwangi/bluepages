@@ -47,14 +47,21 @@ load_top();
                         <div class="row text-center" >
 
                             <div class="col-sm-12">
+
+                              <?php 
+                              $attributes = array('class' => 'form-horizontal card', 'id' => '', 'style'=> 'margin:5px;','utocomplete'=>'off');
+                              echo   form_open_multipart('auth/post_corporate', $attributes); 
+                              ?>
+
 							
-							<form action="<?php echo base_url().'auth/post_corporate';?>" method="post" accept-charset="utf-8" class="form-horizontal card" id="" style="margin:5px;" autocomplete="off" enctype="multipart/form-data">
+							
                         <div class="form-group row">
                             <div class="col-md-5 input-blue">
                                 <div class=""> Corporate Name </div>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" name="name" value="" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required"  />                                                           </div>
+                                <input type="text" name="name" value=""  id="name" onchange="get_email()" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required" />
+                                 <span class="text-danger"><?= form_error('name'); ?><span>                                                           </div>
                         </div>
 
                         <div class="form-group row">
@@ -65,7 +72,8 @@ load_top();
 <option value="" selected="selected"></option>
 <option value="1">Public</option>
 <option value="2">Private</option>
-</select>                                                           </div>
+</select>      
+ <span class="text-danger"><?= form_error('type'); ?><span>                                                     </div>
                         </div>
 
                         <div class="form-group row">
@@ -85,7 +93,8 @@ load_top();
 
 
 
-</select>                                                           </div>
+</select>       
+<span class="text-danger"><?= form_error('country'); ?><span>                                                     </div>
                         </div>
 
                          <div class="form-group row">
@@ -105,7 +114,8 @@ load_top();
                                     ?>
 
 
-</select>                                                           </div>
+</select>          
+<span class="text-danger"><?= form_error('county'); ?><span>                                                  </div>
                         </div>
 
                          <div class="form-group row">
@@ -123,21 +133,25 @@ load_top();
                                         <?php
                                     }
                                     ?>
-</select>                                                                </div>
+</select>  
+<span class="text-danger"><?= form_error('sub_county'); ?><span>   
+                                                           </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Physical Address  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="address" value="" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />                                                           </div>
+                                <input type="text" name="address" value="" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />
+                                <span class="text-danger"><?= form_error('address'); ?><span>                                                            </div>
                         </div>
 
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Email Address  </div></div>
                             <div class="col-md-7">
-                               <input type="email" name="email" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" />
+                               <input type="text" name="email" id="email" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" readonly="" />
+
                                                            </div>
                         </div>
 
@@ -145,34 +159,62 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class=""> Website  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="website" value="" class="form-control input-white" pattern=".{6,}" title="Enter valid website" required="required"  />                                                           </div>
+                                <input type="text" name="website" value="" class="form-control input-white" pattern=".{6,}" title="Enter valid website" required="required"  />
+                                 <span class="text-danger"><?= form_error('website'); ?><span>                                                           </div>
                         </div>
 
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Registering Person  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="person" value="" class="form-control input-white" pattern=".{6,}" title="Enter Real Names" required="required"  />                                                           </div>
+                                <input type="text" name="person" value="" class="form-control input-white" pattern=".{6,}" title="Enter Real Names" required="required"  />  
+                                 <span class="text-danger"><?= form_error('person'); ?><span> 
+                                                                                        </div>
                         </div>
 
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Designation  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="designation" value="" class="form-control input-white" pattern=".{2,}" title="Designation" required="required"  />                                                           </div>
+                                <input type="text" name="designation" value="" class="form-control input-white" pattern=".{2,}" title="Designation" required="required"  />    
+                                 <span class="text-danger"><?= form_error('designation'); ?><span> 
+                                                                                       </div>
                         </div>
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Valid Phone No. </div></div>
                             <div class="col-md-7">
                                <input type="tel" name="phone" class="form-control input-white mobile-number" pattern="([\+0-9\s]{10,})"  title="required valid phone" required="required" />
+                                <span class="text-danger"><?= form_error('phone'); ?><span> 
+
                                                            </div>
                         </div>
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
+                            <div class="">Password </div></div>
+                            <div class="col-md-7">
+                                <input type="text" name="password" id="pswd1" class="form-control input-white" required="required" />
+                                 <span class="text-danger" id="pass_error"><span> 
+
+                                                           </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-5 input-blue">
+                            <div class="">Confirm Password </div></div>
+                            <div class="col-md-7">
+                                <input type="text" name="password" id="pswd2" class="form-control input-white" required="required" />
+                                
+
+                                                           </div>
+                        </div>
+                       
+
+                         <div class="form-group row">
+                            <div class="col-md-5 input-blue">
                             <div class="">Upload Corporate Logo </div></div>
                             <div class="col-md-7">
-                               <input type="file" name="logo" id="profile" accept=".jpg,.png,.jpeg" class="form-control input-white" required="required">
+                               <input type="file" name="passport" id="profile" accept=".jpg,.png,.jpeg" class="form-control input-white" required="required">
+
                                                            </div>
                         </div>
 
@@ -183,7 +225,7 @@ load_top();
                               </div>
 							  <div class="col-sm-3"> 
                               <div class="forgot-phone text-right float-right">
-                                             <button type="submit" class="btn btn-success btn-md btn-block waves-effect text-center m-b-20"> <i class="fa fa-sign-in"></i> Submit</button>
+                                             <button type="submit" onclick="matchPassword()" class="btn btn-success btn-md btn-block waves-effect text-center m-b-20"> <i class="fa fa-sign-in"></i> Submit</button>
 
                                         </div>
                               </div>
@@ -194,7 +236,7 @@ load_top();
 								 </div>
 
 
-  </form>  
+  <?php echo form_close();?>
                                 
                      
                             </div>
@@ -212,6 +254,55 @@ load_top();
                         </div>
                 </div>
 </div>
+
+
+<script type="text/javascript">
+
+  function get_email(){
+   
+    var apiUrl = "<?php echo base_url('home/create_email'); ?>";
+
+    
+    const name  = document.getElementById("name").value;
+    const email = document.getElementById("email");
+    const postData = {
+        name: name,
+       
+    };
+     const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    };
+
+    // Fetch data from API
+    fetch(apiUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+
+          console.log(data.email);
+          email.value  = data.email;
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+      }
+         function matchPassword() {  
+        var pw1 = document.getElementById("pswd1");  
+        var pw2 = document.getElementById("pswd2");  
+        if(pw1 != pw2)  
+        {   
+          document.getElementById("pass_error").innerHTML = "password don't match";
+          
+        }  
+  }
+  
+</script>
 
 <style type="text/css">
     .input-blue{

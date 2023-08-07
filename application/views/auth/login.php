@@ -48,20 +48,34 @@ load_top();
                         <div class="">
                             <div class="card-block login-box">
                                 <div class="row m-b-20">
-                                    <div class="col-md-12""text-center" >
+                                    <div class="col-md-12 text-center" >
 									
                                         <h4 class="text-center text-light bg-blue" style="font-size: 16px; padding: 10px;"><b>SIGN IN</b></h4>
 										
 										 										
                                     </div>
+
+                                    <p class="text-danger text-center"><?php if(isset($error)){
+                                    	echo $error;
+                                    }
+
+
+                                     ?></p>
                                 </div>
+								<style type="text/css">
+									span > p {color:red;}
+									.text-danger{
+										color: red;
+									}
 								
+								</style>
 							 <div class="material-group">
 										<div class="material-addone input-group-addon1">
 											<span class="fa fa-user"></span>
 										</div>
 										<div class="form-group">
-											<input type="text" name="email" placeholder="Email"  class="form-control" required="">
+											<input type="text" name="email" placeholder="Email"  class="form-control">
+											 <span class="text-danger"><?= form_error('email'); ?><span>
 											<span class="form-bar"></span>
 											
 										</div>
@@ -72,7 +86,8 @@ load_top();
 											<span class="fa fa-lock"></span>
 										</div>
 										<div class="form-group">
-											 <input type="password" name="password" placeholder="Password" class="form-control" required="">
+											 <input type="password" name="password" placeholder="Password" class="form-control">
+											  <span class="text-danger"><?= form_error('password'); ?><span>
 											<span class="form-bar"></span>
 										
 										</div>

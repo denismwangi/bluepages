@@ -127,6 +127,9 @@ $this->load->model('forum_m', true);
         font-size: 14px !important;
 
     }
+    .schedule-block{
+        border-left:none !important;
+    }
 
 </style>
 
@@ -154,7 +157,27 @@ $this->load->model('forum_m', true);
                                                  
                                                 ?> 
                                             
-                                                 <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="80" height="80" class="img-radius img-80 align-top m-r-10"  style="margin-top: -125px !important; margin-right: 10px !important;">
+                                                 <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>">
+
+                                                   
+
+                                <?php
+                                if(!empty($u->passport)){
+
+                                    ?>
+
+
+                                   <img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>" alt="user image" width="80" height="80" class="img-radius img-80 align-top m-r-10"  style="margin-top: -125px !important; margin-right: 10px !important;">
+
+                                    <?php
+                                }else{
+
+                                    ?>
+                                    <img src="<?php echo base_url().'public/img/avatar.png';?>" alt="user image" width="80" height="80" class="img-radius img-80 align-top m-r-10"  style="margin-top: -125px !important; margin-right: 10px !important;">
+                                    <?php
+                                }
+
+                    ?>
                                                  </a>
                                                     
                                                 <?php

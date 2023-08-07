@@ -5,14 +5,17 @@ class 	Test extends CI_Controller {
 function __construct(){
 	parent::__construct();
 	
-	if(!$this->session->userdata('uid'))
-		redirect('signin');
-	}
+	// if(!$this->session->userdata('uid'))
+	// 	redirect('signin');
+	 }
 public function one(){
 
 
 	
-	  echo "hello";
+	   $dest = FCPATH . "uploads/companies/";
+
+
+	   echo $dest; die;
 	}
 
 }

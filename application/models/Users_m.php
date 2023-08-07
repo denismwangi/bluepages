@@ -76,5 +76,16 @@ class Users_m extends CI_Model{
         }
     }
 
+
+    public function get_last_id()
+    {
+       $query = $this->db->get('users');
+       $last_row = $query->last_row();
+
+        if ($last_row)
+            return $last_row;
+        
+    }
+
 }
 

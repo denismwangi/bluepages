@@ -8,7 +8,7 @@ class Adverts extends CI_Controller {
 		     if(!$this->session->userdata('id'))
 				redirect('auth/login');
 			 }
-		 }
+		 
 
 	public function index(){
 

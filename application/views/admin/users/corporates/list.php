@@ -5,6 +5,16 @@
 $this->load->helper('assets');
 
 load_main_top();
+
+ //  $this->load->model('counties_m', true);
+
+
+   $this->load->model('counties_m', true);
+   
+   $this->load->model('forum_m', true);
+ $this->load->model('users_m', true);
+
+
 ?>
  <body   style="background-color:lightgrey; background-image: url(); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;; background-repeat: no-repeat; background-attachment: fixed;" >
         <div id="pcoded" class="pcoded iscollapsed" nav-type="st2" theme-layout="vertical" vertical-placement="left" vertical-layout="wide" pcoded-device-type="desktop" vertical-nav-type="expanded" vertical-effect="shrink" vnavigation-view="view1" sidebar-img="false" sidebar-img-type="img1" layout-type="light">
@@ -186,12 +196,12 @@ load_main_top();
 							<th style="text-align:center;">NO</th>
 							<th style="text-align:center;">PHOTO</th>
 							<th style="text-align:center;"> NAME</th>
-							<th style="text-align:center;"> TYPE</th>
+						
 							<th style="text-align:center;">Email</th>
 							<th style="text-align:center;">MOBILE NUMBER</th> 
 							<th style="text-align:center;">DESIGNATION</th> 
 							<th style="text-align:center;">COUNTY</th>
-							<th style="text-align:center;">SUB COUNTY</th> 
+							
 							<th style="text-align:center;">ACTION</th>
 						</tr>
 
@@ -200,22 +210,38 @@ load_main_top();
         	<?php
              
              foreach ($users as $user) {
+             	$c = $this->counties_m->find($user->county);
+
              	?>
              	 <tr>                           
              
 
 	            <td>1.</td>
-				<td> <img src="<?php echo base_url().'public//img/users/user1.jpg';?>" width="65" class="img-radius" alt="User-Profile-Image"></td>
+	            <?php
+				if(!empty($user->passport)){
+
+	            	?>
+
+
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$user->passport;?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+
+	            	<?php
+	            }else{
+
+	            	?>
+					<td> <img src="<?php echo base_url().'public/img/avatar.png';?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+	            	<?php
+	            }
+
+	            	?>
 	            <td><?php echo $user->name ?></td>
-	            <td><?php echo $user->type; ?></td>
 	            <td><?php echo $user->email; ?></td>
 	            <td><?php echo $user->phone; ?></td>
 	            <td><?php echo $user->designation; ?></td>
 	            <td><?php
 
-	             echo $user->county; 
+	             echo $c->name; 
 	             ?></td>
-	            <td><?php echo $user->sub_county; ?></td>
 
 	            <td>
 	            <div class="btn-toolbar">

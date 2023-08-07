@@ -52,6 +52,35 @@ class Forum extends CI_Controller {
 
 	}
 
+	function time_ago($timestamp) {
+	    $current_time = time();
+	    $time_difference = $current_time - $timestamp;
+
+	    $seconds = $time_difference;
+	    $minutes = round($seconds / 60);
+	    $hours = round($seconds / 3600);
+	    $days = round($seconds / 86400);
+	    $weeks = round($seconds / 604800);
+	    $months = round($seconds / 2629440);
+	    $years = round($seconds / 31553280);
+
+	    if ($seconds <= 60) {
+	        return $seconds . ' seconds ago';
+	    } elseif ($minutes <= 60) {
+	        return $minutes . ' minutes ago';
+	    } elseif ($hours <= 24) {
+	        return $hours . ' hours ago';
+	    } elseif ($days <= 7) {
+	        return $days . ' days ago';
+	    } elseif ($weeks <= 4) {
+	        return $weeks . ' weeks ago';
+	    } elseif ($months <= 12) {
+	        return $months . ' months ago';
+	    } else {
+	        return $years . ' years ago';
+	    }
+         }
+
 
 
         function create($month,$year)
@@ -208,7 +237,7 @@ class Forum extends CI_Controller {
             $data['month'] = $month;
             $data['page_title']= 'Join Discussion';
 
-            $this->load->view('user/forum/view',$data); 
+            $this->load->view('admin/forum/view',$data); 
 
 	}
 
@@ -314,10 +343,26 @@ class Forum extends CI_Controller {
 			<div class="schedule-list">
                                             
                                       
-             <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>"><img src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg" alt="user image" width="50"  height="50" class="schedule-image"></a>
-        
+             <a href="<?php echo base_url().'user/profile/view/'.$u->id;?>">
+                 <?php
+                                if(!empty($u->passport)){
+
+                                    ?>
 
 
+                                   <img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>"alt="user image" width="50"  height="50" class="schedule-image">
+
+                                    <?php
+                                }else{
+
+                                    ?>
+                                    <img src="<?php echo base_url().'public/img/avatar.png';?>" alt="user image" width="50"  height="50" class="schedule-image">
+                                    <?php
+                                }
+
+                    ?>
+
+				 </a>
          
              
 

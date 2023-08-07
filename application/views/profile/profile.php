@@ -6,143 +6,431 @@ $this->load->helper('assets');
 load_mixed_top();
 
 
-load_sidebar();
+
 //load_header();
 $this->load->model('forum_m', true);
  $this->load->model('users_m', true);
+ $this->load->model('counties_m', true);
+  $this->load->model('countries_m');
+  $this->load->model('subcounties_m');
 
+
+
+
+ ?>
+ <body   style="background-color:lightgrey; background-image: url(); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;; background-repeat: no-repeat; background-attachment: fixed;" >
+        <div id="pcoded" class="pcoded iscollapsed" nav-type="st2" theme-layout="vertical" vertical-placement="left" vertical-layout="wide" pcoded-device-type="desktop" vertical-nav-type="expanded" vertical-effect="shrink" vnavigation-view="view1" sidebar-img="false" sidebar-img-type="img1" layout-type="light">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+      <div class="containter-fluid">
+      
+       <section id="highlight">
+          <div class="container-fluid">
+              <div class="row">
+        
+        <div id="left" class="left col-lg-3 col-md-8 "  ><br>
+      
+        
+           <a class="btn btn-sm btn-danger text-center" style="font-size:18px;" data-toggle="elementscroll" onclick="goBack();" href=""><i class="fa fa-caret-left"></i> BACK TO PREVIOUS</b></a>             
+                    </div>
+        
+               
+        
+        
+        
+                  <div id="left" class="left col-lg-9 col-md-8 text-right">
+          
+          
+                      <h3 style="color:white;font-size:24px;">Welcome to Blue Pages - Gets you to the doorsteps of your clients  </h3>
+                         <p style="font-size:25px; color:white;">Fast, Reliable  and  Accurate </p>
+                    </div>
+                    
+          
+          
+          
+          
+                
+                </div>
+            </div>
+      
+        </section>
+      
+      
+      
+      <div class="row">
+      
+        <?php
+
+
+load_sidebar();
 
 //print_r($user); die;
 
- ?>
- <style type="text/css">
-     .profile-th{
-        background-color: #fff;
+        ?>
+        
+        
+        
+        
+        
+        
+        
+        <div class="col-lg-8">
 
-     }
-     .p-det{
+           <div  class="row" style=" " >
+                            <div class="col-lg-1"style=" "></div>
+                            <div class="col-lg-10">
+                              
+                                <div style= "height:auto; background-color:#0760f0; border-color: blue;"class="card gallery-desc">
+                                        <div  class="row" style=" " >
+                                    <div class="col-lg-3"style=" ">
+                                         <div class="card  mb-8" style="background-color:#0760f0;width:190;margin-top:10;height:auto ">
+                                          <br><br><br>
+                                          <div style= "border-color: white;"class="card gallery-desc">
+                                            <div Style="background-color:#0760f0" >
+                                            
+                                                <div Style="margin:10">
+                                                 
+                                                  <?php
+                                if(!empty($user->passport)){
 
-        color: black !important;
+                                    ?>
 
-     }
-     .profile-text td p strong {
-          color: black !important;
-      }
-      .title-bg{
-         background-color: #0760f0 !important;
-      }
 
- </style>
-   <script type="text/javascript" src="https://demo.dsms.co.ke/assets/js/jquery.min.js"></script>
+                                   <img src="<?php echo base_url().'uploads/profile/'.$user->passport;?>" alt="user image" width="155" height="150">
 
-<div class="pcoded-content">
-                            <div class="pcoded-inner-content">
-                                <div class="main-body">
-                                    <div class="page-wrapper">
-                                        <div class="page-body">
+                                    <?php
+                                }else{
 
-                                            <div class="page-cotent" id="scroll-fill">
-<div class="overflow-auto p-3 bg-light"  style="max-width: 100%; max-height: 800px;">                                                 <!-- statustic card start -->
-<div class="row">
-    <div class="col-md-12">
-        <div class=" recent-operations-card">
-            <div class="card-block">  
-               <section id="highlight">
-            <div class="container-fluid">
-                <div style= " background-color: #0760f0;" class="row">
-                
-<!-- 
-                            <div class="pull-left" style="margin-top: 25px;padding-left: 10px; width: 0px;">
-                                <a href="/contacts/user.php"><button class="btn btn-danger" ><span class="fa fa-caret-left"></span> PREVIOUS PAGE</button></a>
-                            </div>  -->
+                                    ?>
+                                    <img src="<?php echo base_url().'public/img/avatar.png';?>" alt="user image" width="155" height="150">
+                                    <?php
+                                }
 
-                        <div class="col-md-7 ">
-                            <div class="col-md-12">
-                                <h3 class="m-b-12" style="color: white;">Blue Pages gets you to the doorsteps of your clients</h3>
-                                <p><h4 style="color: white;">Fast, Reliable and Accurate</h4></p>
-                            </div>
-                        </div>
+                    ?>
+                                              </div>
+                                              
+                                                          
+                                            </div>
+                                            
+                                          </div>
+                                      </div>
+                                    
+                                    
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    <div class="col-lg-9"style=" ">
+                                    
+                                    <div class="card bg-light mb-8" style="max-width: ;background-color:white;height:auto;margin:10">
+                                      
+                                      <div class="card-body">
+                                          <p class="card-text"Style="color:black;margin-left:5;font-size:19"><b>Category</b> : <b><?php
 
-                    <div class="col-md-5">
+                                          if($group_id == 3 ){
+                                             echo $user->name; 
 
-                        <div class="pull-right" style="margin-top: 25px; padding-right: 3px;">
-                        
-                            
-                           
-                            <a href=""><button class="btn btn-success" style="text-transform: uppercase; font-size: "><span style="font-size:18px; " class="fa fa-plus"></span> New Discussion </button></a>
-                            
-                            <a href="" onclick="goBack();"><button class="btn btn-danger" ><span class="fa fa-caret-left"></span> PREVIOUS PAGE</button></a>
-                        </div>                  
+                                          }elseif($group_id == 4 || $group_id == 1){
+                                            echo $user->full_name; 
 
-                    </div>
-            </div>
+
+                                        }
+?>
+                                          
+                                             
+
+                                           </b></p>
+                                          <?php
+
+                                          $c = $this->counties_m->find($user->county);
+                                          $cu = $this->subcounties_m->find($user->country);
+               
+                                          ?>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Category: </b>Access Controll</p> 
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>County:</b> <?php echo $c->name; ?></p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b Style="margin-left:20;">Sub-County: </b><?php echo $cu->name; ?></p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Postal Address: </b><?php echo $user->address;?></p>
+                                      
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Telephone Number:</b> <?php echo $user->phone; ?></p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Email:</b><?php echo $user->email; ?></p>
+                                      <div class="card-header" Style="text-align:center;font-size:17">
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a> 
+                                          <a href="#" class="btn btn-primary">SCHEDULE FACE TO FACE LIVE CHAT</a>
+                                      </div>
+                                      
+                                      </div>
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+                                
+                                    
             
-        </section>
-        <br>
-        <br>
-
-                <div class="card recent-operations-card">
-<div class="row">
-<div class="col-md-12">
-   <div class="block-fluid">
-        
-          
-  <div class="image text-center" >
-          
-
-<table style="width: 100%; float: left;" border="1" class="profile-text">
-        <tbody>
-                <tr style="height: 7px !important;" class=" ">
-                        <td style="height: ;" rowspan="7" width="191" class="text-center img-area" >
-                             <div class="image text-center img-area" >
-                                   <image src="https://www.test.bluepages.co.ke/public/img/admin/admin.jpg"  class="text-center" width="250" height="250" > 
+            
+            
+                                
+                                     
                                 </div>
-                        </td>
-                        <td style="height:7px !important;" colspan="4" width="544" class="title-bg">
-                                <h3 style="text-align: center; color: #fff;"><strong>USER DETAILS</strong></h3>
-                        </td>
-                </tr>
-                <tr style="height:;" class="profile-th">
-                        <td style="text-align: center; height: 20px;" width="181">
-                                <p class="p-det"><strong>Names</strong></p>
-                        </td>
-                        <td style="text-align: center; height:;" width="181">
-                                <p class="p-det"><?php echo ucwords($user->full_name); ?> </p>
-                        </td>
-                        
-                </tr>
-                
-               <tr style="height:;" class="profile-th">
-                        <td style="text-align: center; height: 20px;" width="181">
-                                <p class="p-det"><strong>Date Joined</strong></p>
-                        </td>
-                        <td style="text-align: center; height:;" width="181">
-                                <p class="p-det"><?php //echo date('d M Y',$user->created_at)?> 4th March 2023</p>
-                        </td>
-                        
-                </tr>
-                
-                <!-- <tr style="height: 41px;" class="profile-th">
-                        <td style="text-align: center; height: 41px;" width="181">
-                                <p><strong>Date of Birth</strong></p>
-                        </td>
-                        <td style="text-align: center; height: 41px;" width="181">
-                                <p><strong>Gender</strong></p>
-                        </td>
-                        
-                </tr> -->
+                                  
+
+                            
+                                  
+                            </div>
+                            
+                            <div class="col-lg-1"></div>
+                            
+                                      
+                                    
+                            </div><hr>
+         
         
+        
+        
+        
+        
+        
+        <div class="row">
+           
+        
+          <div class="col-lg-12 col-md-6 default-grid-item">
+            <div style= "border-color: blue;"class="card gallery-desc">
+              <div class="overflow-auto p-3 bg-light"  style="max-width: 100%; max-height: 700;">
+              
+              
+                  <div  class="row" style=" " >
+                    <div class="col-lg-6"style=" "></div>
+                    <div class="col-lg-6">
+                            <nav class="navbar navbar-light bg-light">
+                          <form class="form-inline">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                          </form>
+                        </nav>
+                                                                      
+                        
+                          
+
+                    
+                          
+                    </div>
+                    
+                    
+                    
+                          
+                        
+                </div>
+              
+                  
+
               
                 
-                
-        </tbody>
-</table>
+              
+                <div  class="row" style=" " >
+                            <div class="col-lg-1"style=" "></div>
+                            <div class="col-lg-10">
+                              
+                                <div style= "height:auto; background-color:#0760f0; border-color: blue;"class="card gallery-desc">
+                                        <div  class="row" style=" " >
+                                    <div class="col-lg-3"style=" ">
+                                         <div class="card  mb-8" style="background-color:#0760f0;width:190;margin-top:10;height:auto;margin-left:20 ">
+                                          <br><br><br>
+                                          <div style= "border-color: white;"class="card gallery-desc">
+                                            <div Style="background-color:#0760f0;" >
+                                            
+                                                <div Style="margin:10">
+                                                 <img  src="<?php echo base_url().'public/img/access4.png';?>" width="155" height="150" alt="icons2/uploads" />
+                                              </div>
+                                              
+                                                          
+                                            </div>
+                                            
+                                          </div>
+                                      </div>
+                                    
+                                    
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    <div class="col-lg-9"style=" ">
+                                    
+                                    <div class="card bg-light mb-8" style="max-width: ;background-color:white;height:auto;margin:10">
+                                      
+                                      <div class="card-body">
+                                          <p class="card-text"Style="color:black;margin-left:5;font-size:19"><b>Access Kenya Home Security</b></p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Category: </b>Access Controll</p> 
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>County:</b> Nairobi          <b Style="margin-left:20;">Sub-County:</b> Westlands</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Postal Address: </b>P. O. Box 19234 – 00502, Mombasa</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Physical Address:</b> Rehema House, Westlands</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Telephone Number:</b> 0703670134</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Email:</b> homeaccess@posta.co.ke</p>
+                                      <div class="card-header" Style="text-align:center;font-size:17">
+                                          <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
+                                      </div>
+                                      
+                                      </div>
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+                                
+                                    
+            
+            
+            
+                                
+                                     
+                                </div>
+                                  
+
+                            
+                                  
+                            </div>
+                            
+                            <div class="col-lg-1"></div>
+                            
+                                      
+                                    
+                            </div><hr>
+                            
+                            
+                            <div  class="row" style=" " >
+                            <div class="col-lg-1"style=" "></div>
+                            <div class="col-lg-10">
+                              
+                                <div style= "height:auto; background-color:#0760f0; border-color: blue;"class="card gallery-desc">
+                                        <div  class="row" style=" " >
+                                    <div class="col-lg-3"style=" ">
+                                         <div class="card  mb-8" style="background-color:#0760f0;width:190;margin-top:10;height:auto;margin-left:20 ">
+                                          <br><br><br>
+                                          <div style= "border-color: white;"class="card gallery-desc">
+                                            <div Style="background-color:#0760f0" >
+                                            
+                                                <div Style="margin:10">
+                                                 <img  src="<?php echo base_url().'public/img/access2.jpg';?>" width="155" height="150" alt="icons2/uploads" />
+                                              </div>
+                                              
+                                                          
+                                            </div>
+                                            
+                                          </div>
+                                      </div>
+                                    
+                                    
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    <div class="col-lg-9"style=" ">
+                                    
+                                    <div class="card bg-light mb-8" style="max-width: ;background-color:white;height:auto;margin:10">
+                                      
+                                      <div class="card-body">
+                                          <p class="card-text"Style="color:black;margin-left:5;font-size:19"><b>ACS Kenya</b></p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Category: </b>Access Control</p> 
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>County:</b> Mombasa          <b Style="margin-left:20;">Sub-County:</b> Changamwe</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Postal Address: </b>P. O. Box 51514 – 00502, Mombasa</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Physical Address:</b>  Kings House, Mombasa</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Telephone Number:</b> 0717222186</p>
+                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Email:</b> mysecurity@posta.co.ke</p>
+                                      <div class="card-header" Style="text-align:center;font-size:17">
+                                          <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
+                                      </div>
+                                      
+                                      </div>
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+                                
+                                    
+            
+            
+            
+                                
+                                     
+                                </div>
+                                  
+
+                            
+                                  
+                            </div>
+                            
+                            <div class="col-lg-1"></div>
+                            
+                                      
+                                    
+                            </div>
+              
+              
+              
+              
+              
+              
+                   
+              
+              
+              
+              
+              </div>
+            </div>
+          </div>
+          </div>
+        
+        
+        
+        
+        </div>
 
 
-   
+        <?php
 
 
+load_right_bar();
 
+        ?>
+        
+        
+        
+      
+      
+      
+      
+      
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      </div>
+     </div>
 
 <?php
 

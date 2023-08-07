@@ -11,9 +11,13 @@ function __construct(){
 
 public function index(){
 
+		$this->load->model('users_m');
+		$this->load->model('individuals_m');
+		$this->load->model('corporates_m');
 
-	
-	  $this->load->view('user/index');	
+		 $this->load->view('user/index');	
+
+
 	}
 
 }

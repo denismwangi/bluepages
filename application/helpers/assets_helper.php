@@ -46,3 +46,12 @@ if ( ! function_exists('load_header')){
        require_once(APPPATH."views/includes/header.php");
    }
 }
+
+
+
+if ( ! function_exists('load_right_bar')){
+   function load_right_bar(){
+
+       require_once(APPPATH."views/includes/right_bar.php");
+   }
+}
