@@ -125,8 +125,11 @@ class Auth extends CI_Controller{
 	     $this->form_validation->set_rules('county', 'County', 'required|max_length[30]');
 	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required|max_length[30]');
 	     $this->form_validation->set_rules('address', 'Address', 'required|max_length[30]');
-	     $this->form_validation->set_rules('phone', 'Phone', 'required');
-	      $this->form_validation->set_rules('password', 'Password', 'required');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[users.phone]');
+	     // $this->form_validation->set_rules('password', 'Password', 'required');
+	     $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[20]|alpha_numeric|matches[passconf]');
+	     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+
 
 
 
@@ -247,11 +250,13 @@ class Auth extends CI_Controller{
 	     $this->form_validation->set_rules('county', 'County', 'required');
 	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required');
 	     $this->form_validation->set_rules('address', 'Address', 'required');
-	     $this->form_validation->set_rules('phone', 'Phone', 'required');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[users.phone]');
 	      $this->form_validation->set_rules('website', 'Website', 'required');
 	      $this->form_validation->set_rules('person', 'Person', 'required');
 	     $this->form_validation->set_rules('designation', 'Designation', 'required');
-	      $this->form_validation->set_rules('password', 'Password', 'required');
+	     // $this->form_validation->set_rules('password', 'Password', 'required');
+	     $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[20]|alpha_numeric|matches[passconf]');
+		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 
 
           //validate the fields of form

@@ -26,6 +26,16 @@ class Users_m extends CI_Model{
           return $this->db->where( array('id' => $id))->count_all_results('users') >0;
     }
 
+     function email_exists($email)
+    {
+          //return $this->db->where( array('email' => $email))->count_all_results('users') >0;
+
+          $this->db->where('email', $email);
+        $query = $this->db->get('users'); // 'users' should be replaced with your actual table name
+
+        return $query->num_rows() > 0; 
+    }
+
     function user_data($data)
     {
        

@@ -76,6 +76,8 @@ load_sidebar();
         
         <div class="col-lg-8">
 
+          <h2 style="text-align: center;">WELCOME TO MY PAGE</h2>
+
            <div  class="row" style=" " >
                             <div class="col-lg-1"style=" "></div>
                             <div class="col-lg-10">
@@ -138,8 +140,6 @@ load_sidebar();
                                         }
 ?>
                                           
-                                             
-
                                            </b></p>
                                           <?php
 
@@ -223,168 +223,87 @@ load_sidebar();
                           
                         
                 </div>
-              
-                  
 
-              
-                
-              
-                <div  class="row" style=" " >
+
+
+                    <div  class="row" style=" " >
                             <div class="col-lg-1"style=" "></div>
                             <div class="col-lg-10">
-                              
-                                <div style= "height:auto; background-color:#0760f0; border-color: blue;"class="card gallery-desc">
-                                        <div  class="row" style=" " >
-                                    <div class="col-lg-3"style=" ">
-                                         <div class="card  mb-8" style="background-color:#0760f0;width:190;margin-top:10;height:auto;margin-left:20 ">
-                                          <br><br><br>
-                                          <div style= "border-color: white;"class="card gallery-desc">
-                                            <div Style="background-color:#0760f0;" >
-                                            
-                                                <div Style="margin:10">
-                                                 <img  src="<?php echo base_url().'public/img/access4.png';?>" width="155" height="150" alt="icons2/uploads" />
-                                              </div>
-                                              
-                                                          
-                                            </div>
-                                            
-                                          </div>
-                                      </div>
-                                    
-                                    
+
+              
+
+              <div class="col-lg-4 col-md-6 default-grid-item">
+                                <div class="card gallery-desc">                             
+                                    <div class="masonry-media">
+                                        <a  class="media-middle"  href="<?php echo base_url().'#'; ?>">
+                                            <img src="<?php echo base_url().'public/img/access4.png';?>" width="100%" height="180" alt="Files/board" />                                                            </a>
                                     </div>
-                                    
-                                    
-                                    
-                                    
-                                    <div class="col-lg-9"style=" ">
-                                    
-                                    <div class="card bg-light mb-8" style="max-width: ;background-color:white;height:auto;margin:10">
-                                      
-                                      <div class="card-body">
-                                          <p class="card-text"Style="color:black;margin-left:5;font-size:19"><b>Access Kenya Home Security</b></p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Category: </b>Access Controll</p> 
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>County:</b> Nairobi          <b Style="margin-left:20;">Sub-County:</b> Westlands</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Postal Address: </b>P. O. Box 19234 – 00502, Mombasa</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Physical Address:</b> Rehema House, Westlands</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Telephone Number:</b> 0703670134</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Email:</b> homeaccess@posta.co.ke</p>
-                                      <div class="card-header" Style="text-align:center;font-size:17">
+                                     <div class="card-header" Style="text-align:center;font-size:17">
+                                           <h4>Access Kenya Home Security</h4>
                                           <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
                                           <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
                                       </div>
-                                      
-                                      </div>
-                                    </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                    
-                                    </div>
-                                
-                                    
-            
-            
-            
-                                
-                                     
                                 </div>
-                                  
-
-                            
-                                  
                             </div>
-                            
-                            <div class="col-lg-1"></div>
-                            
-                                      
-                                    
-                            </div><hr>
-                            
-                            
-                            <div  class="row" style=" " >
-                            <div class="col-lg-1"style=" "></div>
-                            <div class="col-lg-10">
-                              
-                                <div style= "height:auto; background-color:#0760f0; border-color: blue;"class="card gallery-desc">
-                                        <div  class="row" style=" " >
-                                    <div class="col-lg-3"style=" ">
-                                         <div class="card  mb-8" style="background-color:#0760f0;width:190;margin-top:10;height:auto;margin-left:20 ">
-                                          <br><br><br>
-                                          <div style= "border-color: white;"class="card gallery-desc">
-                                            <div Style="background-color:#0760f0" >
-                                            
-                                                <div Style="margin:10">
-                                                 <img  src="<?php echo base_url().'public/img/access2.jpg';?>" width="155" height="150" alt="icons2/uploads" />
-                                              </div>
-                                              
-                                                          
-                                            </div>
-                                            
-                                          </div>
-                                      </div>
-                                    
-                                    
+                              <div class="col-lg-4 col-md-6 default-grid-item">
+                                <div class="card gallery-desc">                             
+                                    <div class="masonry-media">
+                                        <a  class="media-middle"  href="<?php echo base_url().'#'; ?>">
+                                            <img src="<?php echo base_url().'public/img/access2.jpg';?>" width="100%" height="180" alt="Files/board" />                                                            </a>
                                     </div>
-                                    
-                                    
-                                    
-                                    
-                                    <div class="col-lg-9"style=" ">
-                                    
-                                    <div class="card bg-light mb-8" style="max-width: ;background-color:white;height:auto;margin:10">
-                                      
-                                      <div class="card-body">
-                                          <p class="card-text"Style="color:black;margin-left:5;font-size:19"><b>ACS Kenya</b></p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Category: </b>Access Control</p> 
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>County:</b> Mombasa          <b Style="margin-left:20;">Sub-County:</b> Changamwe</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Postal Address: </b>P. O. Box 51514 – 00502, Mombasa</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Physical Address:</b>  Kings House, Mombasa</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Telephone Number:</b> 0717222186</p>
-                                      <p class="card-text"Style="color:black;margin-left:5;font-size:17"><b>Email:</b> mysecurity@posta.co.ke</p>
-                                      <div class="card-header" Style="text-align:center;font-size:17">
+                                     <div class="card-header" Style="text-align:center;font-size:17">
+                                           <h4>ACS Kenya</h4>
                                           <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
                                           <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
                                       </div>
-                                      
-                                      </div>
-                                    </div>
-                                    </div>
-                                    
-                                    
-                                    
-                                    
-                                    </div>
-                                
-                                    
-            
-            
-            
-                                
-                                     
                                 </div>
-                                  
-
-                            
-                                  
                             </div>
-                            
-                            <div class="col-lg-1"></div>
-                            
+                              <div class="col-lg-4 col-md-6 default-grid-item">
+                                <div class="card gallery-desc">                             
+                                    <div class="masonry-media">
+                                        <a  class="media-middle"  href="<?php echo base_url().'#'; ?>">
+                                            <img src="<?php echo base_url().'public/img/access4.png';?>" width="100%" height="180" alt="Files/board" />                                                            </a>
+                                    </div>
+                                     <div class="card-header" Style="text-align:center;font-size:17">
+                                      <h4>Access Kenya Home Security</h4>
                                       
-                                    
+                                          <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
+                                      </div>
+                                </div>
                             </div>
-              
-              
-              
-              
-              
-              
-                   
-              
-              
-              
+                              <div class="col-lg-4 col-md-6 default-grid-item">
+                                <div class="card gallery-desc">                             
+                                    <div class="masonry-media">
+                                        <a  class="media-middle"  href="<?php echo base_url().'#'; ?>">
+                                            <img src="<?php echo base_url().'public/img/access4.png';?>" width="100%" height="180" alt="Files/board" />                                                            </a>
+                                    </div>
+                                     <div class="card-header" Style="text-align:center;font-size:17">
+                                           <h4>Access Kenya Home Security</h4>
+                                          <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
+                                      </div>
+                                </div>
+                            </div>
+                              <div class="col-lg-4 col-md-6 default-grid-item">
+                                <div class="card gallery-desc">                             
+                                    <div class="masonry-media">
+                                        <a  class="media-middle"  href="<?php echo base_url().'#'; ?>">
+                                            <img src="<?php echo base_url().'public/img/access4.png';?>" width="100%" height="180" alt="Files/board" />                                                            </a>
+                                    </div>
+                                     <div class="card-header" Style="text-align:center;font-size:17">
+                                           <h4>Access Kenya Home Security</h4>
+                                          <a href="#" class="btn btn-primary">VISIT WEBSITE</a> 
+                                          <a href="<?php echo base_url().'user/contacts/chat';?>" class="btn btn-primary">POSTA CHAT</a>
+                                      </div>
+                                </div>
+                            </div>
+                     
+
+
+                           <hr>               
+                    </div>
+                  </div>
               
               </div>
             </div>

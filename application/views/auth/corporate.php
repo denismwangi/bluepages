@@ -30,8 +30,8 @@ load_top();
         <div class="container-fluid">
 		
             <div class="row">
-                <div class="col-lg-7"></div>
- <div class="col-lg-5">
+                <div class="col-lg-6"></div>
+ <div class="col-lg-6">
  
                 <!--<div class=" md-float-material form-material auth-box card login-a">-->
 				
@@ -49,7 +49,7 @@ load_top();
                             <div class="col-sm-12">
 
                               <?php 
-                              $attributes = array('class' => 'form-horizontal card', 'id' => '', 'style'=> 'margin:5px;','utocomplete'=>'off');
+                              $attributes = array('class' => 'form-horizontal card', 'id' => '', 'style'=> 'margin:5px; background:#fff;','utocomplete'=>'off');
                               echo   form_open_multipart('auth/post_corporate', $attributes); 
                               ?>
 
@@ -60,8 +60,10 @@ load_top();
                                 <div class=""> Corporate Name </div>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" name="name" value=""  id="name" onchange="get_email()" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required" />
-                                 <span class="text-danger"><?= form_error('name'); ?><span>                                                           </div>
+                                <input type="text" name="name" value="<?php echo set_value('name'); ?>"  id="name" onchange="get_email()" class="form-control input-white" pattern=".{6,}" title="Enter your real names" required="required" />
+
+                               
+                                  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('name'); ?><span>                                                           </div>
                         </div>
 
                         <div class="form-group row">
@@ -73,7 +75,7 @@ load_top();
 <option value="1">Public</option>
 <option value="2">Private</option>
 </select>      
- <span class="text-danger"><?= form_error('type'); ?><span>                                                     </div>
+  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('type'); ?><span>                                                     </div>
                         </div>
 
                         <div class="form-group row">
@@ -94,7 +96,7 @@ load_top();
 
 
 </select>       
-<span class="text-danger"><?= form_error('country'); ?><span>                                                     </div>
+ <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('country'); ?><span>                                                     </div>
                         </div>
 
                          <div class="form-group row">
@@ -115,7 +117,7 @@ load_top();
 
 
 </select>          
-<span class="text-danger"><?= form_error('county'); ?><span>                                                  </div>
+ <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('county'); ?><span>                                                  </div>
                         </div>
 
                          <div class="form-group row">
@@ -134,7 +136,7 @@ load_top();
                                     }
                                     ?>
 </select>  
-<span class="text-danger"><?= form_error('sub_county'); ?><span>   
+ <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('sub_county'); ?><span>   
                                                            </div>
                         </div>
 
@@ -142,15 +144,15 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class=""> Physical Address  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="address" value="" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />
-                                <span class="text-danger"><?= form_error('address'); ?><span>                                                            </div>
+                                <input type="text" name="address" value="<?php echo set_value('address'); ?>"  class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />
+                                 <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('address'); ?><span>                                                            </div>
                         </div>
 
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Email Address  </div></div>
                             <div class="col-md-7">
-                               <input type="text" name="email" id="email" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" readonly="" />
+                               <input type="text" name="email" id="email" value="<?php echo set_value('email'); ?>" class="form-control input-white email" pattern=".{6,}" title="Enter a valid email" required="required" readonly="" />
 
                                                            </div>
                         </div>
@@ -159,16 +161,16 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class=""> Website  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="website" value="" class="form-control input-white" pattern=".{6,}" title="Enter valid website" required="required"  />
-                                 <span class="text-danger"><?= form_error('website'); ?><span>                                                           </div>
+                                <input type="text" name="website" value="<?php echo set_value('website'); ?>" class="form-control input-white" pattern=".{6,}" title="Enter valid website" required="required"  />
+                                  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('website'); ?><span>                                                           </div>
                         </div>
 
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Registering Person  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="person" value="" class="form-control input-white" pattern=".{6,}" title="Enter Real Names" required="required"  />  
-                                 <span class="text-danger"><?= form_error('person'); ?><span> 
+                                <input type="text" name="person" value="<?php echo set_value('person'); ?>" class="form-control input-white" pattern=".{6,}" title="Enter Real Names" required="required"  />  
+                                  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('person'); ?><span> 
                                                                                         </div>
                         </div>
 
@@ -176,16 +178,16 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class=""> Designation  </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="designation" value="" class="form-control input-white" pattern=".{2,}" title="Designation" required="required"  />    
-                                 <span class="text-danger"><?= form_error('designation'); ?><span> 
+                                <input type="text" name="designation" value="<?php echo set_value('designation'); ?>" class="form-control input-white" pattern=".{2,}" title="Designation" required="required"  />    
+                                  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('designation'); ?><span> 
                                                                                        </div>
                         </div>
                          <div class="form-group row">
                             <div class="col-md-5 input-blue">
                             <div class=""> Valid Phone No. </div></div>
                             <div class="col-md-7">
-                               <input type="tel" name="phone" class="form-control input-white mobile-number" pattern="([\+0-9\s]{10,})"  title="required valid phone" required="required" />
-                                <span class="text-danger"><?= form_error('phone'); ?><span> 
+                               <input type="tel" name="phone" value="<?php echo set_value('phone'); ?>" class="form-control input-white mobile-number" pattern="([\+0-9\s]{10,})"  title="required valid phone" required="required" />
+                                 <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('phone'); ?><span> 
 
                                                            </div>
                         </div>
@@ -193,8 +195,8 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class="">Password </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="password" id="pswd1" class="form-control input-white" required="required" />
-                                 <span class="text-danger" id="pass_error"><span> 
+                                <input type="text" name="password" id="pswd1" value="<?php echo set_value('password'); ?>" class="form-control input-white" required="required" />
+                                   
 
                                                            </div>
                         </div>
@@ -202,8 +204,8 @@ load_top();
                             <div class="col-md-5 input-blue">
                             <div class="">Confirm Password </div></div>
                             <div class="col-md-7">
-                                <input type="text" name="password" id="pswd2" class="form-control input-white" required="required" />
-                                
+                                <input type="text" name="passconf" id="pswd2" class="form-control input-white" required="required" />
+                                 <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('password'); ?><span> 
 
                                                            </div>
                         </div>
@@ -260,7 +262,7 @@ load_top();
 
   function get_email(){
    
-    var apiUrl = "<?php echo base_url('home/create_email'); ?>";
+    var apiUrl = "<?php echo base_url('home/create_corporate_email'); ?>";
 
     
     const name  = document.getElementById("name").value;
@@ -292,15 +294,7 @@ load_top();
 
 
       }
-         function matchPassword() {  
-        var pw1 = document.getElementById("pswd1");  
-        var pw2 = document.getElementById("pswd2");  
-        if(pw1 != pw2)  
-        {   
-          document.getElementById("pass_error").innerHTML = "password don't match";
-          
-        }  
-  }
+         
   
 </script>
 

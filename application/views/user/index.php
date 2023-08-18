@@ -80,13 +80,13 @@ load_main_top();
                     ?>
 
 
-                   <td><img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>" width="65" class="img-radius" alt="User-Profile-Image">
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$u->passport;?>" width="65" height="65"  style= "border-color: blue;" class="img-radius" alt="User-Profile-Image">
 
                     <?php
                 }else{
 
                     ?>
-                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="65" class="img-radius" alt="User-Profile-Image">
+                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="65" height="65"  style= "border-color: blue;" class="img-radius" alt="User-Profile-Image">
                     <?php
                 }
 
@@ -186,9 +186,7 @@ load_main_top();
 
                     ?>
 
-        
-		<br>
-		<br>
+    
 
         <div Style="background-color:#0760f0;">
 		<h5 style="color:white"><b>

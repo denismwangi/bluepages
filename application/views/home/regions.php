@@ -73,25 +73,29 @@ load_top();
         <section id="regions">
             <div class="container">
 			<div class="row">
-			            <div class="col-lg-6">
-							<h2 class="uppercase">REGIONS</h2>
-							
-                        </div> 
-						<div class="col-lg-3">
-						  <span class="text-center pull-left" style="margin-top:20px !important;">
-						<a style="background-color:green;padding:3px;color:white;font-size:20px;"class="button btn btn-primary  " href="<?php echo base_url().'adverts/years'; ?>">
+			           
+
+						<div class="col-lg-2">
+						  <span class="text-center pull-right" style="margin-top:20px !important;">
 						
-						<i class=""></i> VIEW CONTACTS IN KENYA</a>
                     	</span>
 						
 							
-						</div> 
-						<div class="col-lg-3">
+						</div> <br> <br>
+						<div class="col-lg-10">
 						
-						<span class="text-center pull-left" style="margin-top:20px !important;">
-						<a style="background-color:green;padding:3px;color:white;font-size:20px;"class="button btn btn-primary  " href="<?php echo base_url().'adverts/years'; ?>">
+						<span class="text-center pull-right" style="margin-top:20px !important;">
+						     <a style="padding:3px;color:white;font-size:20px;"class="button btn btn-primary  " href="">
 						
-						<i class=""></i> VIEW ADVERTS IN KENYA</a>
+								<i class=""></i>  CONTACTS IN KENYA</a>
+								<a style="padding:3px;color:white;font-size:20px;"class="button btn btn-primary  " href="<?php echo base_url().'adverts/years'; ?>">
+								
+								<i class=""></i>  ADVERTS IN KENYA</a>
+
+								<a target="" style="padding:3px;color:white;font-size:20px;"	class="button btn btn-primary " data-toggle="elementscroll" href="<?php echo base_url().'marketplace'; ?>"> <i ></i>  MARKET - SOKO
+							</a>
+							<a target="" style="padding:3px;color:white;font-size:20px;"	class="button btn btn-primary " data-toggle="elementscroll" href=""> <i ></i>  TALENTS AND JOBS
+							</a>
                     	</span>
 						
 							

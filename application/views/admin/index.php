@@ -58,13 +58,13 @@ load_main_top();
                     ?>
 
 
-                   <td><img src="<?php echo base_url().'uploads/profile/'.$this->session->userdata('passport');?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+                   <td><img src="<?php echo base_url().'uploads/profile/'.$this->session->userdata('passport');?>" width="65" height="65" class="img-radius" alt="User-Profile-Image">
 
                     <?php
                 }else{
 
                     ?>
-                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="50" height="50" class="img-radius" alt="User-Profile-Image">
+                     <img src="<?php echo base_url().'public/img/avatar.png';?>" width="65" height="65" class="img-radius" alt="User-Profile-Image">
                     <?php
                 }
 
@@ -205,6 +205,13 @@ load_main_top();
                     <a href="<?php echo base_url().'admin/forum';?>" class="">
                         <span class="pcoded-micon"><i class="fa fa-book"></i></span>
                         <span class="pcoded-mtext"style="color:black">Forum</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="<?php echo base_url().'admin/marketplace';?>" class="">
+                        <span class="pcoded-micon"><i class="fa fa-cart"></i></span>
+                        <span class="pcoded-mtext"style="color:black">Marketplace</span>
                     </a>
                 </li>
                

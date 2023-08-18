@@ -158,7 +158,7 @@ echo   form_open_multipart('user/settings/update_individual', $attributes);
             <div class="form-row">
               <div class="form-group col-md-6">
                <label for="inputPassword4">Email Address</label>
-                <input type="text" name="email" value="<?php echo $user->email; ?>" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  /> 
+                <input type="text" name="email" value="<?php echo $user->email; ?>" class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required" readonly="" /> 
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPassword4">Phone Number</label>

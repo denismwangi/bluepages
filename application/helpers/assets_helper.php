@@ -35,7 +35,7 @@ if ( ! function_exists('load_mixed_top')){
 if ( ! function_exists('load_sidebar')){
    function load_sidebar(){
 
-       require_once(APPPATH."views/includes/sidebar.php");
+       require_once(APPPATH."views/includes/left_sidebar.php");
    }
 }
 
