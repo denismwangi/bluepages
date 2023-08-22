@@ -208,13 +208,19 @@ load_main_top();
                     </a>
                 </li>
 
-                <li class="">
+                
+               <li class="">
                     <a href="<?php echo base_url().'admin/marketplace';?>" class="">
                         <span class="pcoded-micon"><i class="fa fa-cart"></i></span>
                         <span class="pcoded-mtext"style="color:black">Marketplace</span>
                     </a>
                 </li>
-               
+                <li class="">
+                    <a href="<?php echo base_url().'admin/talents';?>" class="">
+                        <span class="pcoded-micon"><i class="fa fa-cart"></i></span>
+                        <span class="pcoded-mtext"style="color:black">Talents</span>
+                    </a>
+                </li>
                
 				
 				<li class=" push-effect">

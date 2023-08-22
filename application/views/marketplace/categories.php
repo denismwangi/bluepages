@@ -183,11 +183,11 @@ load_mixed_top();
 		<div class="col-lg-2 col-md-6 default-grid-item">
 			<div style= "border-color: blue;"class="card gallery-desc">
 				<div class="masonry-media">
-				<a href="#"data-toggle="modal" data-target="#exampleModal01">
+				<a href="<?php echo base_url().'marketplace/childcategories/'.$subcat->id;?>">
 					<img src="<?php echo base_url().'uploads/marketplace/categories/'.$subcat->image;?>" width="100%" height="180" alt="icons2/uploads" />					</a>
 				</div>
 				<div class="home_card">
-				 <a class="media-middle" target="" href="">
+				 <a class="media-middle" target="" <?php echo base_url().'marketplace/childcategories/'.$subcat->id;?>>
 					<h6 style="color:black;"class="text-center text-18-bold"><?php echo $subcat->name; ?></h6>
 				  </a>
 				</div>

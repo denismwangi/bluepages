@@ -65,6 +65,8 @@ load_sidebar();
         <div class="card recent-operations-card">             
            <div class="block-fluid col-md-6">
 
+            <h3 class="text-center">ADD NEW CATEGORY</h3>
+
 
 
             <?php 

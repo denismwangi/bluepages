@@ -8,8 +8,6 @@ load_mixed_top();
 
 load_sidebar();
 //load_header();
-
-
 ?>
 
 <div class="pcoded-content">

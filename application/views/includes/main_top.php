@@ -58,6 +58,7 @@
         <link href="https://elearning.dsms.co.ke/assets/css/custom.css" type="text/css" rel="stylesheet" />
         <link href="https://elearning.dsms.co.ke/assets/css/widget.css" type="text/css" rel="stylesheet" />       
         <link href="https://elearning.dsms.co.ke/assets/css/audio7_html5.css" type="text/css" rel="stylesheet" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
 
         
 	</head>

@@ -3,7 +3,9 @@
 
 $this->load->helper('assets');
 
-load_mixed_top();
+//load_mixed_top();
+load_main_top();
+
  $this->load->model('categories_m');
  $this->load->model('subcategories_m');
 ?>
@@ -179,7 +181,7 @@ load_mixed_top();
 		<div class="col-lg-2 col-md-6 default-grid-item">
 			<div style= "border-color: blue;"class="card gallery-desc">
 				<div class="masonry-media">
-				<a href="<?php echo base_url().'/marketplace/sub_categories/'.$subcat->id;?>">
+				<a href="<?php echo base_url().'marketplace/sub_categories/'.$subcat->id;?>">
 					<img src="<?php echo base_url().'uploads/marketplace/categories/'.$subcat->image;?>" width="100%" height="180" alt="icons2/uploads" />					</a>
 				</div>
 				<div class="home_card">

@@ -47,6 +47,39 @@ load_top();
                         <div class="row text-center" >
 
                             <div class="col-sm-12">
+                                    <?php if ($this->session->flashdata('success')): ?>
+                    <div class="alert alert-success" style="margin-left: 30px; margin-right: 30px; margin-top: 10px;" >
+                        <?php echo $this->session->flashdata('success'); ?>
+                    </div>
+
+                     <script>
+                      var email = "<?php echo $email; ?>";
+                   
+                      const login_url = "<?php echo base_url('auth/login'); ?>";
+                      var message = "Your Username/Email is, " + email + "\nProceed to login with this username and the registered password";
+
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Registration Successful',
+                          text: message
+                           
+                                
+                      }).then(function() {
+                        window.location.href = login_url;
+                      })
+
+                    </script>
+                    <style type="text/css">
+                      .swal2-html-container{
+                        font-size: 20px !important;
+                      }
+                      .swal2-popup{
+
+                        width: 50em !important;
+
+                      }
+                    </style>
+            <?php endif; ?>
 
                               <?php 
                               $attributes = array('class' => 'form-horizontal card', 'id' => '', 'style'=> 'margin:5px; background:#fff;','utocomplete'=>'off');
@@ -146,6 +179,13 @@ load_top();
                             <div class="col-md-7">
                                 <input type="text" name="address" value="<?php echo set_value('address'); ?>"  class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />
                                  <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('address'); ?><span>                                                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-5 input-blue">
+                            <div class="">Postal Address  </div></div>
+                            <div class="col-md-7">
+                                <input type="text" name="postal_address" value="<?php echo set_value('postal_address'); ?>"  class="form-control input-white" pattern=".{3,}" title="Enter a valid address" required="required"  />
+                                 <span class="text-danger" style="color: #f00; font-size: 14px;"><?= form_error('postal_address'); ?><span>                                                            </div>
                         </div>
 
                          <div class="form-group row">

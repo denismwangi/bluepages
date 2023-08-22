@@ -39,9 +39,6 @@ class Auth extends CI_Controller{
 				
 				$email=$this->input->post('email');
 				$password=$this->input->post('password');
-
-				
-
 				$validate=$this->users_m->user_data($email);
 				
 				 if ($validate && password_verify($password, $validate->password)) {
@@ -52,11 +49,7 @@ class Auth extends CI_Controller{
 
 
 					$this->session->set_userdata($userData);
-
-
-
 					if($validate->group_id == 1 || $validate->group_id == 2){
-						
 
 						redirect('admin');
 
@@ -113,7 +106,6 @@ class Auth extends CI_Controller{
 
 		$this->load->view('auth/individual',$data);
 
-
 	}
 
 	public function post_individual()
@@ -125,18 +117,15 @@ class Auth extends CI_Controller{
 	     $this->form_validation->set_rules('county', 'County', 'required|max_length[30]');
 	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required|max_length[30]');
 	     $this->form_validation->set_rules('address', 'Address', 'required|max_length[30]');
-	     $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[users.phone]');
-	     // $this->form_validation->set_rules('password', 'Password', 'required');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required|callback_validate_custom_phone');
+	     $this->form_validation->set_rules('email', 'Email', 'required');
 	     $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[20]|alpha_numeric|matches[passconf]');
 	     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-
-
-
 
 		//Rules for validation
           if ($this->form_validation->run() === FALSE) {
 
-          	$data['countries'] = $this->countries_m->get_all();
+          	 $data['countries'] = $this->countries_m->get_all();
 	       $data['counties'] = $this->counties_m->get_all();
 	       $data['sub_counties'] = $this->subcounties_m->get_all();
 
@@ -152,8 +141,7 @@ class Auth extends CI_Controller{
 			$phone = $this->input->post('phone');
 			$county = $this->input->post('county');
 			$password = $this->input->post('password');
-		
-            
+	
 		    $dest = FCPATH . "uploads/profile";
 
             $config['upload_path'] = $dest;
@@ -213,25 +201,25 @@ class Auth extends CI_Controller{
 				); 
 				$ok_user = $this->users_m->create($user_data);
 
+				$data['email'] = $email;
+
 
 				$this->session->set_flashdata('success','Registration successfull, Now you can login.');	
-				redirect('auth/login');
+				//redirect('auth/individual');
+				$this->load->view('auth/individual',$data);
 
 			} else {
 
 				$this->session->set_flashdata('error','Something went wrong. Please try again.');	
 				redirect('auth/individual');	
 			}
-
-			
-			
 		}
 	}
 
 	public function test()
-        {
-                $this->load->view('test/upload_form', array('error' => ' ' ));
-        }
+    {
+            $this->load->view('test/upload_form', array('error' => ' ' ));
+    }
 
      public function logout() {
         // Clear session data
@@ -244,33 +232,34 @@ class Auth extends CI_Controller{
 	public function post_corporate()
 	{
 
-		  $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[30]');
+		 $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[30]');
 	     $this->form_validation->set_rules('type', 'Type', 'required');
 	     $this->form_validation->set_rules('country', 'Country', 'required');
 	     $this->form_validation->set_rules('county', 'County', 'required');
 	     $this->form_validation->set_rules('sub_county', 'Sub county', 'required');
 	     $this->form_validation->set_rules('address', 'Address', 'required');
-	     $this->form_validation->set_rules('phone', 'Phone', 'required|is_unique[users.phone]');
-	      $this->form_validation->set_rules('website', 'Website', 'required');
-	      $this->form_validation->set_rules('person', 'Person', 'required');
+	     $this->form_validation->set_rules('phone', 'Phone', 'required|callback_validate_custom_phone');
+	     $this->form_validation->set_rules('website', 'Website', 'required');
+	     $this->form_validation->set_rules('person', 'Person', 'required');
 	     $this->form_validation->set_rules('designation', 'Designation', 'required');
-	     // $this->form_validation->set_rules('password', 'Password', 'required');
+	     $this->form_validation->set_rules('postal_address', 'Postal Address', 'required');
+	     $this->form_validation->set_rules('email', 'Email', 'required');
 	     $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[20]|alpha_numeric|matches[passconf]');
-		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+		 $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 
+
+		  $data['countries'] = $this->countries_m->get_all();
+		     $data['counties'] = $this->counties_m->get_all();
+		     $data['sub_counties'] = $this->subcounties_m->get_all();
 
           //validate the fields of form
-          if ($this->form_validation->run() === FALSE) {
-          	 $data['countries'] = $this->countries_m->get_all();
-	       $data['counties'] = $this->counties_m->get_all();
-	       $data['sub_counties'] = $this->subcounties_m->get_all();
-
-	      
+	      if ($this->form_validation->run() === FALSE) {
+	      	
 
 			$this->load->view('auth/corporate',$data);
 
 
-          }else{
+	      }else{
 
           	$name = $this->input->post('name');
 			$type = $this->input->post('type');
@@ -284,6 +273,7 @@ class Auth extends CI_Controller{
 			$designation = $this->input->post('designation');
 			$phone = $this->input->post('phone');
 			$password = $this->input->post('password');
+			$postal_address = $this->input->post('postal_address');
 
 
 			$dest = FCPATH . "uploads/profile";
@@ -327,6 +317,7 @@ class Auth extends CI_Controller{
 				'phone' => $phone,
 				'passport' => $file_name,
 				'created_at' => time(),
+				'postal_address' =>$postal_address
 			);
 
 			$ok = $this->corporates_m->create($form_data);
@@ -344,12 +335,16 @@ class Auth extends CI_Controller{
 					'role' => 2,
 					'locked' => 1,
 					'unique_id' => $ok,
+					'postal_address' => $postal_address
 				); 
 				$ok_user = $this->users_m->create($user_data);
 
+				$data['email'] = $email;
+
 
 				$this->session->set_flashdata('success','Registration successfull, Now you can login.');	
-				redirect('auth/login');
+			   $this->load->view('auth/corporate',$data);
+
 
 			} else {
 
@@ -359,10 +354,18 @@ class Auth extends CI_Controller{
 
           }
 
-    
-
-
 	}
+
+
+	 public function validate_custom_phone($phone) {
+       
+        if (!$this->users_m->phone_exists($phone)) {
+            return TRUE;
+        } else {
+            $this->form_validation->set_message('validate_custom_phone', 'The phone number has already been used.');
+            return FALSE;
+        }
+    }
 
 
 

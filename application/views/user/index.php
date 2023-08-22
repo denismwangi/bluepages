@@ -591,6 +591,10 @@ showTime();
 
 												
                                             </div><hr>
+
+
+                                            <h5 class="text-center">Your Login Username/Email: <?php echo $u->email; ?> <br><br>
+                                     
 											
 											
 											<div class="row "  >

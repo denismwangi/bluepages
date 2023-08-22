@@ -1,23 +1,16 @@
 <?php
 
-
 $this->load->helper('assets');
-
 load_top();
 ?>
-	<body   style="background-color:lightgrey; background-image: url(<?php echo base_url().'public/img/sky.jpg';?>); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;; background-repeat: no-repeat; background-attachment: fixed;" >
-        
-		
+	<body   style="background-color:lightgrey; background-image: url(<?php echo base_url().'public/img/sky.jpg';?>); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;; background-repeat: no-repeat; background-attachment: fixed;">
 		    
 						<div class="container-fluid">
 						
 						
 							<div class="row">
 							
-									<div id="left" class="left col-lg-2 col-md-8 "  ><br>
-								
-									
-										
+									<div id="left" class="left col-lg-2 col-md-8 "  ><br>								
 														
 									</div>
 									<div  class="left col-lg-8 col-md-8 text-center"><br>
@@ -32,8 +25,7 @@ load_top();
 										  														
 														<h2 style="color:blue;text-align:center"><b>WELCOME TO BLUE PAGES   </b></h2>
 										 <h3 style=" color:blue;text-align:center"><b>THE BEST PLACE TO FIND, ADVERTISE AND MARKET YOUR PRODUCTS AND SERVICES</b> </h3>
-										 
-										
+		
 									</div>
 									<div id="left" class="left col-lg-2 col-md-8 "  ></div>
 										
@@ -99,8 +91,6 @@ load_top();
 <?php
 
 load_footer();
-
-
 ?>
 
 

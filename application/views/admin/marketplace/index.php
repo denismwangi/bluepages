@@ -181,7 +181,7 @@ load_main_top();
                                             <img src="<?php echo base_url().'public/img/admin/corporate.jpg';?>" width="100%" height="150" alt="photo" />                                                            </a>
                                     </div>
                                     <div class="home_card"style="background-color:gray;">
-                                        <a  class="media-middle"  href="#">
+                                        <a  class="media-middle"  href="<?php echo base_url().'admin/marketplace/sub_categories';?>">
                                             <h6 style="color:lightgrey;" class="text-center text-18-bold">SUBCATEGORIES</h6>
                                         </a>
                                     </div>
@@ -192,12 +192,12 @@ load_main_top();
 							<div class="col-lg-3 col-md-6 default-grid-item">
                                 <div class="card gallery-desc">
                                     <div class="masonry-media">
-                                        <a  class="media-middle"  href="">
+                                        <a  class="media-middle"  href="<?php echo base_url().'admin/marketplace/child_categories';?>">
                                             <img src="<?php echo base_url().'public/img/admin/individual.jpg';?>" width="100%" height="150" alt="photo" />                                                            </a>
                                     </div>
                                     <div class="home_card"style="background-color:gray;">
-                                        <a  class="media-middle"  href="#">
-                                            <h6 style="color:lightgrey;" class="text-center text-18-bold"> PRODUCTS </h6>
+                                        <a  class="media-middle"  href="<?php echo base_url().'admin/marketplace/child_categories';?>">
+                                            <h6 style="color:lightgrey;" class="text-center text-18-bold">SUB CATEGORIES 2</h6>
                                         </a>
                                     </div>
                                 </div>

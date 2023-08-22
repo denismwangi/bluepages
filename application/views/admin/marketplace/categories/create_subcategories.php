@@ -66,6 +66,9 @@ $this->load->model('categories_m', true);
         <div class="card recent-operations-card">             
            <div class="block-fluid col-md-6">
 
+                        <h3 class="text-center">ADD NEW SUB CATEGORY</h3>
+
+
 
 
             <?php 

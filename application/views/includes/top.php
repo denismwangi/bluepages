@@ -36,7 +36,8 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="img/favicon.ico">
-        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
+
         
 
 

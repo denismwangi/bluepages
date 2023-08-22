@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * CodeIgniter
  *
@@ -88,6 +90,8 @@ switch (ENVIRONMENT)
 		echo 'The application environment is not set correctly.';
 		exit(1); // EXIT_ERROR
 }
+
+
 
 /*
  *---------------------------------------------------------------
@@ -304,6 +308,7 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+
 
 /*
  * --------------------------------------------------------------------

@@ -31,7 +31,14 @@ class Users_m extends CI_Model{
           //return $this->db->where( array('email' => $email))->count_all_results('users') >0;
 
           $this->db->where('email', $email);
-        $query = $this->db->get('users'); // 'users' should be replaced with your actual table name
+        $query = $this->db->get('users'); // 'users' 
+        return $query->num_rows() > 0; 
+    }
+     function phone_exists($phone)
+    {
+
+          $this->db->where('phone', $phone);
+        $query = $this->db->get('users'); // '
 
         return $query->num_rows() > 0; 
     }

@@ -181,14 +181,15 @@ echo   form_open_multipart('user/settings/update_corporate', $attributes);
             <div class="form-row">
               <div class="form-group col-md-6">
 
-              
-                    <label for="inputEmail4">Profile Picture</label>
-                 <input type="file" name="passport" id="image" class="form-control input-white">
+              <label for="inputPassword4">Postal Address</label>
+                <input type="text" name="postal_address" value="<?php echo $user->postal_address; ?>" class="form-control input-white" pattern=".{3,}" title="Enter a valid Postal Address" required="required"  />
                   
               </div>
               <div class="form-group col-md-6">
 
-                <br>
+              
+                    <label for="inputEmail4">Profile Picture</label>
+                 <input type="file" name="passport" id="image" class="form-control input-white">
               </div>
             </div>
 

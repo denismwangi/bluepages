@@ -8,7 +8,8 @@ function __construct(){
 	
 
 	   $this->load->model('categories_m');
-	$this->load->model('subcategories_m');
+	   $this->load->model('subcategories_m');
+	   $this->load->model('childcategories_m');
 	 }
 
      public function index(){
@@ -31,6 +32,19 @@ function __construct(){
 		  $data['categories'] = $this->categories_m->get_all();
 		  
 		  $this->load->view('marketplace/categories', $data);	
+
+	}
+
+
+	public function childcategories($id)
+	{
+		$data['childcategories'] = $this->childcategories_m->find_all($id);
+		$cat_data = $this->subcategories_m->find($id);
+		$data['name'] = $cat_data->name;
+
+		  $data['categories'] = $this->categories_m->get_all();
+		  
+		  $this->load->view('marketplace/child_categories', $data);	
 
 	}
 

@@ -154,7 +154,64 @@ $this->load->model('categories_m', true);
 
 					<div class="container-fluid">
             	<div class="container-fluid">
-            	<div class="row">               
+            	<div class="row">  
+
+            	  <?php if ($this->session->flashdata('success')): ?>
+                    
+
+                     <script>
+                      var message = " <?php echo $this->session->flashdata('success'); ?>";
+                   
+                     
+
+                      Swal.fire({
+                          icon: 'success',
+                        //  title: '',
+                          text: message
+                           
+                                
+                      })
+
+                    </script>
+                    <style type="text/css">
+                      .swal2-html-container{
+                        font-size: 20px !important;
+                      }
+                      .swal2-popup{
+
+                        width: 50em !important;
+
+                      }
+                    </style>
+            <?php endif; ?>    
+             <?php if ($this->session->flashdata('error')): ?>
+                    
+
+                     <script>
+                      var message = " <?php echo $this->session->flashdata('error'); ?>";
+                   
+                     
+
+                      Swal.fire({
+                          icon: 'error',
+                        //  title: '',
+                          text: message
+                           
+                                
+                      })
+
+                    </script>
+                    <style type="text/css">
+                      .swal2-html-container{
+                        font-size: 20px !important;
+                      }
+                      .swal2-popup{
+
+                        width: 50em !important;
+
+                      }
+                    </style>
+            <?php endif; ?>             
 
                     <div class="center col-md-9 text-center">
                         <h3 style="text-align:center;"class="uppercase">Categories</h3>
@@ -193,11 +250,13 @@ $this->load->model('categories_m', true);
 					</thead>
         <tbody>
         	<?php
+        	$counter = 1; // Initialize the counter
+
              
              foreach ($categories as $cat) {
              	?>
              	 <tr>                           
-	            <td>1.</td>
+	            <td><?php echo $counter++; ?></td>
 	            <td><?php
 
 	            if (!empty($cat->image)){
@@ -221,13 +280,15 @@ $this->load->model('categories_m', true);
 	          
 
 	            <td>
-	            <div class="btn-toolbar">
+	            <div class="btn-toolbar justify-content-center">
 	               
 
-	                <a href="#"class="default-grid-item waves-effect md-trigger btn btn-primary btn-sm">EDIT</a>
+	                <a href="<?php echo base_url().'admin/marketplace/edit_category/'.$cat->id; ?>" class="default-grid-item waves-effect md-trigger btn btn-primary btn-sm">EDIT</a>
 					
-					<a href="#"class="default-grid-item waves-effect md-trigger btn btn-danger btn-sm">REMOVE</a>
+					<a onclick="confirm_delete(<?php echo $cat->id;?>)" style="color: #fff;" class="default-grid-item waves-effect md-trigger btn btn-danger btn-sm">REMOVE</a>
 	        </tr>
+
+
 
 
              	<?php
@@ -278,6 +339,42 @@ $this->load->model('categories_m', true);
                 </div>
             </div>
         </div>
+
+
+            <script type="text/javascript">
+        	
+        	function confirm_delete(id)
+        	{
+        		
+        		
+        		const del_url = "<?php echo base_url('admin/marketplace/delete_category/'); ?>";
+        		const new_url = del_url+id;
+
+
+
+        		const img_ulr = "<?php echo base_url().'public/img/BLUEPAGES.jpg';?>";
+        		 Swal.fire({
+                          //icon: 'error',
+                          title: 'Are You Sure You Want To Remove This Category?',
+                         // text: 'are sure'
+                          imageUrl: img_ulr, // Replace with your image URL
+                          imageWidth: 80, // Adjust image width as needed
+                          imageHeight: 80,
+                         showCancelButton: true,
+						  confirmButtonText: 'Yes, do it!',
+						  cancelButtonText: 'Cancel'
+
+                                
+                      
+                       }).then((result) => {
+				      if (result.isConfirmed) {
+				         window.location.href = new_url;
+				      }
+				    });
+        	}
+        </script>
+
+        
 <?php
 
 load_footer();
