@@ -18,6 +18,7 @@ $this->load->model('subcategories_m', true);
 
 
 
+
                 <div class="pcoded-main-container" style="margin-top: 56px;">
                     <div class="pcoded-wrapper">
                         <nav class="pcoded-navbar scroll" navbar-theme="theme1" active-item-theme="theme2" sub-item-theme="theme2" active-item-style="style0" pcoded-navbar-position="none">
@@ -219,14 +220,6 @@ $this->load->model('subcategories_m', true);
 
 
 					
-                     <div id="right" class="col-lg-3 col-md-8 text-right" >
-						
-							<input type="search" id="form1" class="form-control" />
-									<label class="form-label" for="form1">search </label>
-									
-									
-												  
-                    </div>
 
 
                  </div>
@@ -234,9 +227,19 @@ $this->load->model('subcategories_m', true);
 	.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	 font-size: 16px !important;
 	}
+	.dataTables_filter label{
+    font-size: 15px !important;
+    
+  }
+  .dataTables_length{
+  	display: none !important;
+  }
+  .dataTables_info{
+  	font-size: 14px !important;
+  }
 </style>
 
-                <table id="dom-jqry" class="table table-striped table-bordered ">
+                <table id="childcategories" class="table table-striped table-bordered ">
 					<thead >
 						<tr>
 							<th style="text-align:center;">NO</th>
@@ -390,10 +393,14 @@ $this->load->model('subcategories_m', true);
 				      }
 				    });
         	}
+
+        	$(document).ready( function(){
+                    $('#childcategories').DataTable();
+                })
         </script>
 <?php
 
-load_footer();
+//load_footer();
 
 
 ?>

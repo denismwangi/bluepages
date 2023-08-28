@@ -523,7 +523,7 @@ function __construct(){
 		}
 	}
 
-	public function edit_childcategories($id){
+	public function edit_childcategory($id){
 
 
        	   $data['childcategory'] =  $this->childcategories_m->find($id);
@@ -557,7 +557,7 @@ function __construct(){
 		   $data['childcategories'] =  $this->childcategories_m->get_all();
 		   $data['subcategories'] =  $this->subcategories_m->get_all();
 	
-		  $this->load->view('admin/marketplace/categories/create_childcategory',$data);	
+		  $this->load->view('admin/marketplace/categories/edit_childcategory',$data);	
 
           }else{
 
@@ -612,7 +612,7 @@ function __construct(){
 
 				if($ok){
 
-				   $this->session->set_flashdata('success', 'Child Category added successfully.');
+				   $this->session->set_flashdata('success', 'Child Category updated successfully.');
 				     redirect( 'admin/marketplace/child_categories');
 
 

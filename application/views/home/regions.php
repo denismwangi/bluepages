@@ -92,7 +92,7 @@ load_top();
 								
 								<i class=""></i>  ADVERTS IN KENYA</a>
 
-								<a target="" style="padding:3px;color:white;font-size:20px;"	class="button btn btn-primary " data-toggle="elementscroll" href="<?php echo base_url().'marketplace'; ?>"> <i ></i>  MARKET - SOKO
+								<a target="" style="padding:3px;color:white;font-size:20px;"	class="button btn btn-primary " data-toggle="elementscroll" href="<?php echo base_url().'marketplace/regions'; ?>"> <i ></i>  MARKET - SOKO
 							</a>
 							<a href="<?php echo base_url().'talents'; ?>" target="" style="padding:3px;color:white;font-size:20px;"	class="button btn btn-primary " data-toggle="elementscroll" href=""> <i ></i>  TALENTS AND JOBS
 							</a>

@@ -219,14 +219,6 @@ $this->load->model('categories_m', true);
 
 
 					
-                     <div id="right" class="col-lg-3 col-md-8 text-right" >
-						
-							<input type="search" id="form1" class="form-control" />
-									<label class="form-label" for="form1">search category</label>
-									
-									
-												  
-                    </div>
 
 
                  </div>
@@ -234,9 +226,19 @@ $this->load->model('categories_m', true);
 	.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	 font-size: 16px !important;
 	}
+	.dataTables_filter label{
+    font-size: 15px !important;
+    
+  }
+  .dataTables_length{
+  	display: none !important;
+  }
+  .dataTables_info{
+  	font-size: 14px !important;
+  }
 </style>
 
-                <table id="dom-jqry" class="table table-striped table-bordered ">
+                <table id="categories" class="table table-striped table-bordered ">
 					<thead >
 						<tr>
 							<th style="text-align:center;">NO</th>
@@ -372,12 +374,16 @@ $this->load->model('categories_m', true);
 				      }
 				    });
         	}
+
+               $(document).ready( function(){
+                    $('#categories').DataTable();
+                })
         </script>
 
         
 <?php
 
-load_footer();
+//load_footer();
 
 
 ?>

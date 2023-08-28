@@ -13,6 +13,8 @@ $this->load->model('categories_m', true);
 
 ?>
 
+
+
 <div class="pcoded-content">
                             <div class="pcoded-inner-content">
                                 <div class="main-body">
@@ -70,7 +72,7 @@ $this->load->model('categories_m', true);
 
             <?php 
 $attributes = array('class' => '', 'id' => '');
-echo   form_open_multipart('admin/marketplace/post_childcategories', $attributes); 
+echo   form_open_multipart('admin/marketplace/update_childcategories/'.$childcategory->id, $attributes); 
 ?>
                <div class="form-group">
                 <label for="inputEmail4">Select Main Category</label>
@@ -92,7 +94,7 @@ echo   form_open_multipart('admin/marketplace/post_childcategories', $attributes
 
               <div class="form-group">
                 <label for="inputEmail4">Select Sub Category</label>
-               <select name="category" class="select form-control" required="required" >
+               <select name="subcategory" class="select form-control" required="required" >
                                 <option value="" selected="selected">Select Sub Category</option>
                                     <?php
 
@@ -102,7 +104,7 @@ echo   form_open_multipart('admin/marketplace/post_childcategories', $attributes
                                         ?>
                                         <option value="<?php echo $scat->id; ?>"><?php echo $scat->name; ?></option>
 
-                                        <option value="<?php echo $scat->id; ?>" <?php if ($childcategory->childcategory == $scat->id) echo 'selected'; ?>>  <?php echo $scat->name; ?></option>
+                                        <option value="<?php echo $scat->id; ?>" <?php if ($childcategory->subcategory == $scat->id) echo 'selected'; ?>>  <?php echo $scat->name; ?></option>
                                         <?php
                                     }
                                     ?>

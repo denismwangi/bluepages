@@ -105,7 +105,7 @@ class Talents extends CI_Controller {
 		if (!$id)
 	      {
 	              
-            $this->session->set_flashdata('error', 'talent not found');
+            $this->session->set_flashdata('error', 'Talent not found');
 
             redirect( 'admin/talents');
         }
@@ -113,10 +113,10 @@ class Talents extends CI_Controller {
 	   	  $data['talent'] = $this->talents_m->find($id);
 
 
-	   	  $this->load->view('admin/talents', $data);
+	   	  
 
 
-		$this->load->view('admin/talents/edit');
+		$this->load->view('admin/talents/edit',$data);
 
 	}
 
@@ -126,7 +126,7 @@ class Talents extends CI_Controller {
 		 if(!$id)
 	      {
 	              
-            $this->session->set_flashdata('error', 'talent not found');
+            $this->session->set_flashdata('error', 'Talent not found');
 
             redirect( 'admin/talents');
         }
@@ -185,7 +185,7 @@ class Talents extends CI_Controller {
 					'created_at' => time(),
 				);
 
-				$ok = $this->talents_m->update_attributes($form_data);
+				$ok = $this->talents_m->update_attributes($id,$form_data);
 
 				if($ok){
 
@@ -207,7 +207,7 @@ class Talents extends CI_Controller {
 
    	if(!$id){
 	              
-        $this->session->set_flashdata('error', 'talent not found');
+        $this->session->set_flashdata('error', 'Talent not found');
 
         redirect( 'admin/talents');
     }
@@ -216,7 +216,7 @@ class Talents extends CI_Controller {
 
    	if($ok){
 
-	   $this->session->set_flashdata('success', 'talent deleted successfully.');
+	   $this->session->set_flashdata('success', 'Talent deleted successfully.');
 	     redirect( 'admin/talents');
 	}
 

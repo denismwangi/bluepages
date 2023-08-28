@@ -8,8 +8,8 @@
             
         </script>
 
-        <script src="<?php echo site_url('assets/js/jquery-1.11.1.min.js');?>"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+       <script src="<?php echo site_url('assets/js/jquery-1.11.1.min.js');?>"></script>
+        
         <script src="<?php echo site_url('assets/js/jquery.themepunch.tools.min.js');?>"></script>
         <script src="<?php echo site_url('assets/js/jquery.themepunch.revolution.min.js');?>"></script>
         <script src="<?php echo site_url('assets/js/bootstrap.min.js');?>"></script>
@@ -24,9 +24,7 @@
         <script src="<?php echo site_url('assets/js/retina.js');?>"></script>
         
         <script src="<?php echo site_url('assets/js/main.js');?>"></script>
-        
- 
-        
+      
 	</body>
 
 </html>

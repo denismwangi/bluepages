@@ -39,6 +39,7 @@ function __construct(){
 	public function childcategories($id)
 	{
 		$data['childcategories'] = $this->childcategories_m->find_all($id);
+
 		$cat_data = $this->subcategories_m->find($id);
 		$data['name'] = $cat_data->name;
 
@@ -46,6 +47,13 @@ function __construct(){
 		  
 		  $this->load->view('marketplace/child_categories', $data);	
 
+	}
+
+
+	public function regions()
+	{
+
+		 $this->load->view('marketplace/regions');	
 	}
 
 

@@ -69,7 +69,7 @@ load_sidebar();
 
             <?php 
 $attributes = array('class' => '', 'id' => '');
-echo   form_open_multipart('admin/talents/edit_talent'.$talent->id, $attributes); 
+echo   form_open_multipart('admin/talents/update_talent/'.$talent->id, $attributes); 
 ?>
               <div class="form-group">
                 <label for="inputEmail4">Category Name</label>

@@ -219,14 +219,7 @@ $this->load->model('categories_m', true);
 
 
 					
-                     <div id="right" class="col-lg-3 col-md-8 text-right" >
-						
-							<input type="search" id="form1" class="form-control" />
-									<label class="form-label" for="form1">search</label>
-									
-									
-												  
-                    </div>
+                    
 
 
                  </div>
@@ -236,7 +229,7 @@ $this->load->model('categories_m', true);
 	}
 </style>
 
-                <table id="dom-jqry" class="table table-striped table-bordered ">
+                <table id="talents" class="table table-striped table-bordered ">
 					<thead >
 						<tr>
 							<th style="text-align:center;">NO</th>
@@ -347,7 +340,7 @@ $this->load->model('categories_m', true);
         	{
         		
         		
-        		const del_url = "<?php echo base_url('admin/marketplace/delete_category/'); ?>";
+        		const del_url = "<?php echo base_url('admin/talents/delete_talent/'); ?>";
         		const new_url = del_url+id;
 
 
@@ -355,7 +348,7 @@ $this->load->model('categories_m', true);
         		const img_ulr = "<?php echo base_url().'public/img/BLUEPAGES.jpg';?>";
         		 Swal.fire({
                           //icon: 'error',
-                          title: 'Are You Sure You Want To Remove This Category?',
+                          title: 'Are You Sure You Want To Remove This Talent?',
                          // text: 'are sure'
                           imageUrl: img_ulr, // Replace with your image URL
                           imageWidth: 80, // Adjust image width as needed
@@ -372,12 +365,16 @@ $this->load->model('categories_m', true);
 				      }
 				    });
         	}
+
+        	$(document).ready( function(){
+                    $('#talents').DataTable();
+                })
         </script>
 
         
 <?php
 
-load_footer();
+//load_footer();
 
 
 ?>
